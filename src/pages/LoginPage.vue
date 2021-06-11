@@ -94,7 +94,7 @@ export default {
     async Login() {
       try {
         const response = await this.axios.post(
-          "https://localhost:3000/user/Login",
+          "http://localhost:4000/auth/login",
           {
             username: this.form.username,
             password: this.form.password
@@ -103,7 +103,7 @@ export default {
         // console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
-        this.$root.store.login(this.form.username);
+        this.$root.store.login(this.form.username, response.data);
         this.$router.push("/");
       } catch (err) {
         console.log(err.response);

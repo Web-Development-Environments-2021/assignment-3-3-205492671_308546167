@@ -14,8 +14,14 @@
           type="text"
           :state="validateState('username')"
         ></b-form-input>
-        <b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.username.required">
           Username is required
+        </b-form-invalid-feedback>
+                <b-form-invalid-feedback v-else-if="!$v.form.username.length">
+          Username length should be between 3-8 characters long
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.username.alpha">
+          Username alpha
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -31,8 +37,13 @@
           v-model="$v.form.password.$model"
           :state="validateState('password')"
         ></b-form-input>
-        <b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.password.required">
           Password is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="!$v.form.password.length"
+        >
+          The password should be between 5-10 characters long
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -64,7 +75,7 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required,  minLength, maxLength, alpha} from "vuelidate/lib/validators";
 export default {
   name: "Login",
   data() {
@@ -79,10 +90,13 @@ export default {
   validations: {
     form: {
       username: {
-        required, 
+        required,
+        length: (u) => minLength(3)(u) && maxLength(8)(u),
+        alpha
       },
       password: {
-        required
+        required,
+        length: (p) => minLength(5)(p) && maxLength(10)(p)
       }
     }
   },

@@ -1,32 +1,44 @@
-import Main from "./pages/MainPage";
-import NotFound from "./pages/NotFoundPage";
-
 const routes = [
-  {
-    path: "/",
-    name: "main",
-    component: Main
-  },
-  {
-    path: "/register",
-    name: "register",
-    component: () => import("./pages/RegisterPage")
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: () => import("./pages/LoginPage")
-  },
-  {
-    path: "/search",
-    name: "search",
-    component: () => import("./pages/SearchPage")
-  },
-  {
-    path: "*",
-    name: "notFound",
-    component: NotFound
-  }
-];
+    {
+        path: "/",
+        name: "MainPage",
+        component: () => import("./pages/MainPage") 
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: () => import("./pages/LoginPage") 
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: () => import("./pages/RegisterPage") 
+    },
+    {
+        path: "/search",
+        name: "Search Page",
+        component: () => import("./pages/SearchPage") 
+    },
+    {
+        path: "/currentFixture",
+        name: "Current Fixture Page",
+        component: () => import("./pages/CurrentFixturePage") 
+    },
+    {
+        path: "/leagueManagement",
+        name: "League Management Page",
+        component: () => import("./pages/LeagueManagementPage") 
+    },
+    {
+        path: "/about",
+        name: "About",
+        component: () => import("./pages/AboutPage") 
+    },
+    {
+        path: "*",
+        name: "Not Found Page",
+        component: () => import("./pages/NotFoundPage") 
+    }
+]
 
 export default routes;

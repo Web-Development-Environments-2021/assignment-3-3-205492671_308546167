@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve_project": "vue-cli-service serve src/main.js",
+    "serve": "vue-cli-service serve src/main.js",
     "build_project": "vue-cli-service build src/main.js"
   },
   "dependencies": {

@@ -21,7 +21,7 @@
           Username length should be between 3-8 characters long
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          Username alpha
+          Username should conatins letters only
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -40,9 +40,6 @@
         <b-form-invalid-feedback v-if="!$v.form.firstname.required">
           firstname is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.firstname.alpha">
-          firstname alpha
-        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
@@ -59,9 +56,6 @@
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.lastname.required">
           lastname is required
-        </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.lastname.alpha">
-          lastname alpha
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -98,14 +92,11 @@
         <b-form-invalid-feedback v-if="!$v.form.password.required">
           Password is required
         </b-form-invalid-feedback>
-        <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
-          Your password should be <strong>strong</strong>. <br />
-          For that, your password should be also:
-        </b-form-text>
-        <b-form-invalid-feedback
-          v-if="$v.form.password.required && !$v.form.password.length"
-        >
-          Have length between 5-10 characters long
+        <b-form-invalid-feedback v-if="!$v.form.password.length">
+          The password have be between 5-10 characters long
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.password.valid">
+          The password have to contains at least one digit and one special character
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -237,20 +228,25 @@ export default {
         alpha
       },
       firstname: {
-        required,
-        alpha
+        required
       },
       lastname: {
-        required,
-        alpha
+        required
       },
       country: {
         required
       },
       password: {
         required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
-      },
+        length: (p) => minLength(5)(p) && maxLength(10)(p),
+        valid: function (value) {
+          const containsNumber = /[0-9]/.test(value);
+          const containsSpecial = /[#?!@$%^&*-]/.test(value);
+          return (
+            containsNumber &&
+            containsSpecial
+          );
+      }},
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")

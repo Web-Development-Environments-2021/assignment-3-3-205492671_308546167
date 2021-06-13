@@ -4,10 +4,11 @@
       <b>Game Id:</b> {{ id }}
     </div>
     <ul class="game-content">
-      <li> host: {{ hostTeam }}</li>
-      <li> guest: {{ guestTeam }}</li>
-      <li> date: {{ date }}</li>
-      <li> time: {{ hour }}</li>
+      <li> host: {{ home_team }}</li>
+      <li> guest: {{ away_team }}</li>
+      <li> date: {{ getDate }}</li>
+      <li> time: {{ getTime }}</li>
+      <li> court: {{ court }}</li>
     </ul>
   </div>
 </template>
@@ -20,11 +21,11 @@ export default {
         type: Number,
         required: true
       },
-      hostTeam: {
+      home_team: {
         type: String,
         required: true
       },
-      guestTeam: {
+      away_team: {
         type: String,
         required: true
       },
@@ -32,10 +33,20 @@ export default {
         type: String,
         required: true
       },
-      hour: {
+      court: {
         type: String,
         required: true
       }
+  },
+  computed: {
+    // a computed getter
+    getTime: function () {
+      // `this` points to the vm instance
+      return this.date.split('T')[1]
+    },
+    getDate: function() {
+      return this.date.split('T')[0]
+    }
   }, 
   mounted(){
     console.log("game preview mounted")

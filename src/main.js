@@ -73,17 +73,28 @@ Vue.config.productionTip = false;
 const shared_data = {
   username: "guest",
   roles: [],
+  favorite_matches: [],
+  fav_match_fresh: false,
+
+
   login(username, roles) {
     localStorage.setItem("username", username);
     localStorage.setItem("roles", roles);
     this.username = username;
     this.roles = roles;
-    console.log("login", this.username);
+    // console.log("login", this.username);
   },
   logout() {
-    console.log("logout");
     localStorage.removeItem("username");
     this.username = undefined;
+  },
+  setFavoriteMatches(favorite_matches) {
+    // console.log(favorite_matches)
+    localStorage.setItem("favorite_matches", favorite_matches);
+    let freshnes = this.fav_match_fresh;
+    localStorage.setItem("fav_match_fresh", !freshnes);
+    this.favorite_matches = favorite_matches;
+    this.fav_match_fresh = !freshnes;
   }
 };
 console.log(shared_data);

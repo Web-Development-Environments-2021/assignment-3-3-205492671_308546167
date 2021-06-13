@@ -20,27 +20,27 @@ export default {
   }, 
   data() {
     return {
-      games: []
+      games: this.$root.store.favorite_matches,
     };
   },
   methods: {
     async updateGames(){
-      console.log("response");
       try {
         const response = await this.axios.get(
           "http://localhost:4000/user/favorites/matches", {withCredentials: true}
         );
         this.games = response.data;
-        console.log(response.data);
       } catch (error) {
         console.log("error in update games")
         console.log(error);
       }
     }
   }, 
-  mounted(){
-    console.log("favorite games mounted");
-    this.updateGames(); 
+  async mounted(){
+    if (!this.$root.store.fav_match_fresh){
+      await this.updateGames();
+      this.$root.store.setFavoriteMatches(this.games) 
+    }
   }
 };
 </script>

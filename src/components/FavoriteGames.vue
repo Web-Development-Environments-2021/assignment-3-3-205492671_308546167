@@ -36,7 +36,8 @@ export default {
       }
     }
   }, 
-  async mounted(){
+  async created(){
+    console.log("fav is up")
     if (!this.$root.store.fav_match_fresh){
       await this.updateGames();
       this.$root.store.setFavoriteMatches(this.games) 

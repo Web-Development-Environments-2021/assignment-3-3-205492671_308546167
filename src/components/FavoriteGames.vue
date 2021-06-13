@@ -20,7 +20,7 @@ export default {
   }, 
   data() {
     return {
-      games: this.$root.store.favorite_matches,
+      games: this.$root.store.state.favorite_matches.matches,
     };
   },
   methods: {
@@ -38,9 +38,9 @@ export default {
   }, 
   async created(){
     console.log("fav is up")
-    if (!this.$root.store.fav_match_fresh){
+    if (!this.$root.store.state.favorite_matches.fresh){
       await this.updateGames();
-      this.$root.store.setFavoriteMatches(this.games) 
+      this.$root.store.actions.setFavoriteMatches(this.games) 
     }
   }
 };

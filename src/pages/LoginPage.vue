@@ -113,11 +113,11 @@ export default {
             username: this.form.username,
             password: this.form.password
           }
-          );
+        );
         // console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
-        this.$root.store.login(this.form.username, response.data);
+        this.$root.store.actions.login(this.form.username, response.data);
         this.$router.push("/");
       } catch (err) {
         console.log(err.response);

@@ -7,7 +7,7 @@
 
         <b-nav-item :to="{ name: 'Search Page' }">Search</b-nav-item>
         </b-navbar-nav>
-        <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
+        <b-navbar-nav class="ml-auto" v-if="!$root.store.state.user.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
           <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
         </b-navbar-nav>
@@ -38,6 +38,9 @@ export default {
         this.$forceUpdate();
       });
     }
+  },
+  created(){
+    console.log(this.$root.store.state.user.username);
   }
 };
 </script>

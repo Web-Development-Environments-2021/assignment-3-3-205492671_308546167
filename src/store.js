@@ -6,27 +6,37 @@ const state = {
     favorite_matches: {
         matches: [],
         fresh: false // indicates whater need to bring favorite matches from server
+    },
+    search: {
+        all_players: [],
+        all_teams: [
+            {
+              "team_id": "2905",
+              "team_name": "AGF",
+              "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/25/2905.png"
+            }
+          ]
     }
 }
 const actions = {
     login(username, roles) {
-        // localStorage.setItem("username", username);
-        // localStorage.setItem("roles", roles);
         state.user.username = username;
         state.user.roles = roles;
-        // console.log("login", this.username);
         },
     logout() {
-    // localStorage.removeItem("username");
     state.user.username = undefined;
     },
     setFavoriteMatches(favorite_matches) {
-    // console.log(favorite_matches)
-    // localStorage.setItem("favorite_matches", favorite_matches);
+
     let freshness = state.favorite_matches.fresh;
-    // localStorage.setItem("fav_match_fresh", !freshnes);
     state.favorite_matches.matches = favorite_matches;
     state.favorite_matches.fresh = !freshness;
+    },
+    setPlayers(players){
+        state.search.all_players = players;
+    },
+    setTeams(teams){
+        state.search.all_teams = teams;
     }
 }
 export { state, actions };  

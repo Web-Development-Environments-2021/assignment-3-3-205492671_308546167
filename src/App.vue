@@ -37,10 +37,35 @@ export default {
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
+    },
+    async getAllPlayres(){
+      console.log("getting players")
+      try {
+        const response = await this.axios.get(
+          "http://localhost:4000/search/player"
+        );
+        this.$root.store.actions.setPlayers(response.data.search_player);
+      } catch (error) {
+        console.log("error in search players")
+        console.log(error);
+      }
+    },
+    async getAllTeams(){
+      console.log("getting players")
+      try {
+        const response = await this.axios.get(
+          "http://localhost:4000/search/team"
+        );
+        this.$root.store.actions.setTeams(response.data.search_team);
+      } catch (error) {
+        console.log("error in search players")
+        console.log(error);
+      }
     }
   },
   created(){
-    console.log(this.$root.store.state.user.username);
+    // this.getAllPlayres();
+    // this.getAllTeams();
   }
 };
 </script>

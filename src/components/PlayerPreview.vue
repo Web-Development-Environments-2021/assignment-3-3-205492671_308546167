@@ -1,60 +1,22 @@
 <template>
     <div>
-        <div class="row">
-            <div class="column">
-                <div class="card">
-                    <img src="https://cdn.sportmonks.com/images/soccer/players/9/37418793.png" alt="Jane" style="width:100%; border-radius:50%;">
-                    <div class="container">
-                        <h2>{{this.$root.store.state.player.players.fullname}}</h2>
-                        <p class="title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-       
-        <!-- <div>
-            <br>
-            <b-card bg-variant="light" no-body class="overflow-hidden px-1 pt-2">
-                <b-row no-gutters>
-                <b-col md="6">
-                    <b-card-img src="https://cdn.sportmonks.com/images/soccer/players/9/37418793.png" alt="Image" class="rounded-0"></b-card-img>
-                </b-col>
-                <b-col md="6">
-                    <b-card-body title="Player Preview">
-                        <b-list-group flush id = "list-group">
-                            <b-list-group-item variant="secondary">Full name:<br> {{this.$root.store.state.player.players.fullname}}</b-list-group-item> 
-                            <b-list-group-item>Group name:  {{this.$root.store.state.player.players.team_name}}</b-list-group-item>
-                            <b-list-group-item>Position number: {{this.$root.store.state.player.players.position_num}}</b-list-group-item>
-                
-                        </b-list-group>
-                    </b-card-body>
-                </b-col>
-                </b-row>
-            </b-card>
-        </div> -->
-
         <div id="player-preview" class="full-height p-4">
             <b-card
                 no-body
                 style="max-width: 20rem; border-radius:50%"
-                img-src="https://cdn.sportmonks.com/images/soccer/players/9/37418793.png"
+                img-src= {{picture}}
             >
                 <template #header>
-                <h4 class="mb-0">Player Preview</h4>
-                </template>
+                <h4 class="mb-0">{{ fullname }}</h4>
+                </template> 
                 
                 <b-list-group flush id = "list-group">
-                    <b-list-group-item>Full name: {{this.$root.store.state.player.players.fullname}}</b-list-group-item> 
-                    <b-list-group-item>Group name:  {{this.$root.store.state.player.players.team_name}}</b-list-group-item>
-                    <b-list-group-item>Position number: {{this.$root.store.state.player.players.position_num}}</b-list-group-item>
+                    <b-list-group-item>Full name: {{ fullname }}</b-list-group-item> 
+                    <b-list-group-item>Group name:  {{ group_name }}</b-list-group-item>
+                    <b-list-group-item>Position number: {{ position_num }}</b-list-group-item>
                 
                 </b-list-group>
-            </b-card>
-                        
+            </b-card>             
         </div>
     </div>
 
@@ -62,6 +24,25 @@
 
 <script>
 export default {
+    name: "PlayerPreview",
+    props: {
+        fullname: {
+            type: String,
+            required: true,
+        },
+        group_name: {
+            type: String,
+            required: true,
+        },
+        position_num: {
+            type: String,
+            required: true
+        },
+        picture: {
+            type: URL,
+            required: true
+        }
+    }
 
 }
 </script>
@@ -131,3 +112,41 @@ export default {
 }
 
 </style>
+
+
+        <!-- <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="https://cdn.sportmonks.com/images/soccer/players/9/37418793.png" alt="Jane" style="width:100%; border-radius:50%;">
+                    <div class="container">
+                        <h2>{{this.$root.store.state.player.players.fullname}}</h2>
+                        <p class="title">CEO &amp; Founder</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p>example@example.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+       
+        <!-- <div>
+            <br>
+            <b-card bg-variant="light" no-body class="overflow-hidden px-1 pt-2">
+                <b-row no-gutters>
+                <b-col md="6">
+                    <b-card-img src="https://cdn.sportmonks.com/images/soccer/players/9/37418793.png" alt="Image" class="rounded-0"></b-card-img>
+                </b-col>
+                <b-col md="6">
+                    <b-card-body title="Player Preview">
+                        <b-list-group flush id = "list-group">
+                            <b-list-group-item variant="secondary">Full name:<br> {{this.$root.store.state.player.players.fullname}}</b-list-group-item> 
+                            <b-list-group-item>Group name:  {{this.$root.store.state.player.players.team_name}}</b-list-group-item>
+                            <b-list-group-item>Position number: {{this.$root.store.state.player.players.position_num}}</b-list-group-item>
+                
+                        </b-list-group>
+                    </b-card-body>
+                </b-col>
+                </b-row>
+            </b-card>
+        </div> -->

@@ -33,6 +33,61 @@ const state = {
         }
 
         
+    },
+    teams:
+    {
+        "team_id": "939",
+        "team_players": [
+          {
+            "player_id": "5627",
+            "fullname": "Mikkel Andersen",
+            "team_name": "Midtjylland",
+            "picture": "https://cdn.sportmonks.com/images/soccer/players/27/5627.png",
+            "position_num": "1"
+          },
+          {
+            "player_id": "82808",
+            "fullname": "Jesper Hansen",
+            "team_name": "Midtjylland",
+            "picture": "https://cdn.sportmonks.com/images/soccer/players/24/82808.png",
+            "position_num": "1"
+          },
+          {
+            "player_id": "440450",
+            "fullname": "Paulo Victor da Silva",
+            "team_name": "Midtjylland",
+            "picture": "https://cdn.sportmonks.com/images/soccer/players/2/440450.png",
+            "position_num": "2"
+          },
+          {
+            "player_id": "61736",
+            "fullname": "Alexander Scholz",
+            "team_name": "Midtjylland",
+            "picture": "https://cdn.sportmonks.com/images/soccer/players/8/61736.png",
+            "position_num": "2"
+          }],
+          "matches": [
+            {
+              "match_id": "1",
+              "home_team": "Silkeborg",
+              "away_team": "Midtjylland",
+              "league": "271",
+              "season": "2021/2022",
+              "court": "1121",
+              "stage": "Regular Season",
+              "referee_name": "ref",
+              "date": "2021-06-05",
+              "eventlog": [
+                {
+                  "date": "2021-06-14",
+                  "min_in_game": "12",
+                  "event_type": "yellow card",
+                  "description": "Messi foueled Ronaldo and got a yellow card"
+                }
+              ],
+              "score": "3-0"
+            }
+          ]
     }
 
 }

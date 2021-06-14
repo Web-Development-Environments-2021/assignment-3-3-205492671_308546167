@@ -1,23 +1,38 @@
 <template>
     <div>
-    <PlayerPreview
-      v-for="g in games"
-      :id="g.match_id" 
-      :home_team="g.home_team" 
-      :away_team="g.away_team" 
-      :date="g.date" 
-      :court="g.court"
-      :key="g.id"></PlayerPreview>
+      <div id= "team-players">
+        <h1 class="labels">Team Players</h1>
+        <PlayerPreview
+          v-for="p in players"
+          :fullname="p.fullname" 
+          :team_name="p.team_name" 
+          :position_num="p.position_num" 
+          :picture="p.picture" 
+          :key="p.fullname"></PlayerPreview>
+      </div>
+      <div id= "matches">
+        <h1 class="labels">Matches</h1>
+        <GamePreview
+          v-for="m in matches"
+          :id="m.match_id" 
+          :home_team="m.home_team" 
+          :away_team="m.away_team" 
+          :date="m.date" 
+          :court="m.court"
+          :key="m.id"></GamePreview>
+      </div>
   </div>
 </template>
 
 <script>
+import GamePreview from '../components/GamePreview.vue';
 import PlayerPreview from '../components/PlayerPreview.vue'
 export default {
-  components: { PlayerPreview },
+  components: { PlayerPreview, GamePreview },
     data() {
       return {
-        players: this.$root.store.state.favorite_matches.matches,
+        players: this.$root.store.state.teams.team_players,
+        matches: this.$root.store.state.teams.matches
       };
   }
 
@@ -25,5 +40,8 @@ export default {
 </script>
 
 <style>
-
+.labels{
+  color:whitesmoke;
+  text-align: center;
+}
 </style>

@@ -3,17 +3,19 @@
         <div id="player-preview" class="full-height p-4">
             <b-card
                 no-body
-                style="max-width: 20rem; border-radius:50%"
-                img-src= {{picture}}
+                style="max-width: 12rem; border-radius:50%"
+                :img-src= picture
+                bg-variant="light"
             >
                 <template #header>
-                <h4 class="mb-0">{{ fullname }}</h4>
+                <h4 class="mb-0" id="player-name-label">{{ fullname }}</h4>
                 </template> 
                 
                 <b-list-group flush id = "list-group">
-                    <b-list-group-item>Full name: {{ fullname }}</b-list-group-item> 
-                    <b-list-group-item>Group name:  {{ group_name }}</b-list-group-item>
-                    <b-list-group-item>Position number: {{ position_num }}</b-list-group-item>
+                    <b-list-group-item variant="primary">Team name: {{ team_name }}</b-list-group-item>
+                    <b-list-group-item >Position number:
+                        <b-badge variant="primary" pill>{{ position_num }}</b-badge>
+                    </b-list-group-item>
                 
                 </b-list-group>
             </b-card>             
@@ -30,7 +32,7 @@ export default {
             type: String,
             required: true,
         },
-        group_name: {
+        team_name: {
             type: String,
             required: true,
         },
@@ -39,7 +41,7 @@ export default {
             required: true
         },
         picture: {
-            type: URL,
+            type: String,
             required: true
         }
     }
@@ -48,15 +50,24 @@ export default {
 </script>
 
 <style>
+
     #list-group {
-        background-color: green;
+        background-color: darkblue;
+        text-align: center;
+        display: inline-flex;
+        flex-direction: row;
+    }
+
+    #player-name-label{
+        text-align: center;
     }
 
     .overflow-hidden{
         max-width: 500px;
         margin-left: auto;
-        margin-right:auto
+        margin-right:auto;
     }
+        
 
 
     .column {

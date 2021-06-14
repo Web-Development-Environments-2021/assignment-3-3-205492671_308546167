@@ -19,23 +19,17 @@ const state = {
     },
     player:{
         players: {
-            "player_id": 37418793,
-            "team_id": 211,
-            "country_id": 2507,
-            "position_id": 2,
-            "common_name": "J. Gomez",
-            "display_name": "J. Gomez",
+            "player_id": "37418793",
             "fullname": "James Gomez",
-            "firstname": "James",
-            "lastname": "Gomez",
+            "team_name": "Horsens",
+            "picture": "https://cdn.sportmonks.com/images/soccer/players/9/37418793.png",
+            "position_num": "2",
+            "common_name": "J. Gomez",
             "nationality": "Gambia",
-            "birthdate": null,
-            "birthcountry": "Gambia",
-            "birthplace": null,
+            "date_of_birth": "04/04/1994",
+            "country": "2507",
             "height": null,
-            "weight": null,
-            "image_path": "https://cdn.sportmonks.com/images/soccer/players/9/37418793.png"
-
+            "Weight": null   
         }
 
         

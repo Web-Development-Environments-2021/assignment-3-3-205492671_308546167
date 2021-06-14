@@ -26,9 +26,21 @@ const routes = [
         component: () => import("./pages/PlayerPage") 
     },
     {
-        path: "/team/page:id",
+        // path: "/player/page:id",
+        path: "/playerPreview",
+        name: "player Page preview",
+        component: () => import("./components/PlayerPreview") 
+    },
+    {
+        // path: "/team/page:id",
+        path: "/team",
         name: "team Page",
         component: () => import("./pages/TeamPage") 
+    },
+    {
+        path: "/about",
+        name: "About",
+        component: () => import("./pages/AboutPage") 
     },
     {
         path: "/currentFixture",

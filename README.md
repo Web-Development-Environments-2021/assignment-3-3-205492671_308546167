@@ -10,7 +10,7 @@ task todo:
 5) game disply component = done
 6) playerPage - naor
 7) TeamPage
-8) playershortdsiply
+8) playerPreview
 9)  teamshortdsiply
 10) logout
 11) leagueMangmentPage

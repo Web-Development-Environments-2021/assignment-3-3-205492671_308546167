@@ -122,9 +122,7 @@ export default {
             password: this.form.password
           }
         );
-        // console.log(response);
-        // this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
+        debugger;
         this.$root.store.actions.login(this.form.username, response.data.roles);
         this.$router.push("/");
       } catch (err) {
@@ -133,13 +131,11 @@ export default {
       }
     },
     onLogin() {
-      // console.log("login method called");
       this.form.submitError = undefined;
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("login method go");
 
       this.Login();
     }

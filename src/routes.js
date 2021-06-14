@@ -20,7 +20,8 @@ const routes = [
         component: () => import("./pages/SearchPage") 
     },
     {
-        path: "/player/page:id",
+        // path: "/player/page:id",
+        path: "/player",
         name: "player Page",
         component: () => import("./pages/PlayerPage") 
     },

@@ -16,10 +16,35 @@ const state = {
               "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/25/2905.png"
             }
           ]
+    },
+    player:{
+        players: {
+            "player_id": 37418793,
+            "team_id": 211,
+            "country_id": 2507,
+            "position_id": 2,
+            "common_name": "J. Gomez",
+            "display_name": "J. Gomez",
+            "fullname": "James Gomez",
+            "firstname": "James",
+            "lastname": "Gomez",
+            "nationality": "Gambia",
+            "birthdate": null,
+            "birthcountry": "Gambia",
+            "birthplace": null,
+            "height": null,
+            "weight": null,
+            "image_path": "https://cdn.sportmonks.com/images/soccer/players/9/37418793.png"
+
+        }
+
+        
     }
+
 }
 const actions = {
     login(username, roles) {
+        debugger;
         state.user.username = username;
         state.user.roles = roles;
         },

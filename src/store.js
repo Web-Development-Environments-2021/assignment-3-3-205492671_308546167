@@ -11,10 +11,20 @@ const state = {
         all_players: [],
         all_teams: [
             {
-              "team_id": "2905",
+                "team_id": "2905",
+                "team_name": "RGF",
+                "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/25/2905.png"
+              },
+            {
+              "team_id": "2906",
               "team_name": "AGF",
               "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/25/2905.png"
-            }
+            },
+            {
+                "team_id": "2907",
+                "team_name": "BGF",
+                "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/25/2905.png"
+              }
           ]
     }
 }

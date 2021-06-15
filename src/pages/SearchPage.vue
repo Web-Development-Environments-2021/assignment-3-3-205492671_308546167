@@ -3,73 +3,92 @@
     <h1 class="title">Search Page</h1>
     <b-input-group prepend="Search Query:" id="search-input">
       <b-form-input v-model="searchQuery"></b-form-input>
-      <div></div>
       
-    <b-form-group v-slot="{ ariaDescribedby }">
-      <b-form-radio-group
-        id="btn-radios-1"
-        v-model="selected"
-        :options="options"
-        :aria-describedby="ariaDescribedby"
-        name="radios-btn-default"
-        buttons
-      ></b-form-radio-group>
-    </b-form-group>
-
+      <b-form-group v-slot="{ ariaDescribedby }">
+        <b-form-radio-group
+          id="btn-radios-1"
+          v-model="selectedMainSearch"
+          :options="mainFilterOptions"
+          :aria-describedby="ariaDescribedby"
+          name="radios-btn-Mainsearch"
+          buttons
+        ></b-form-radio-group>
+      </b-form-group>
     </b-input-group>
-    <div v-if="selected == 'player'">
-      <div v-for="p in filterPlayerBySearch" :key="p.player_id">
-          <span>
-            {{p.fullname}}
-          </span>
-      </div>
-    </div>
-    <div v-if="selected == 'team'">
-      <div v-for="t in filterTeamBySearch" :key="t.team_id">
-          <span>
-            {{t.team_name}}
-          </span>
-      </div>
-    </div>
+    <sort-bar :options="mainSortOptions" v-on:sort-results="SortResults"></sort-bar>
+
+    <search-results v-if="selectedMainSearch == 'team' && filterTeamBySearch" :results="results" :selectedMainSearch="selectedMainSearch" ></search-results>
+    <search-results v-if="selectedMainSearch == 'player' && filterPlayerBySearch" :results="results" :selectedMainSearch="selectedMainSearch" ></search-results>
     <br/>
   </div>
 </template>
 
 <script>
+import searchResults from '../components/searchComponents/searchResults.vue';
+import SortBar from '../components/searchComponents/sortBar.vue';
 export default {
- data() {
-    return {
-      searchQuery:"",
-      selected: 'player',
-      options: [
-        { text: 'player', value: 'player' },
-        { text: 'team', value: 'team' },
-      ]
-    };
-  },
-  computed: {
-    filterPlayerBySearch(){
-      debugger;
-      if (this.searchQuery  == "")
-        return [];
-      let query = this.searchQuery;
-      let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
-        return pl.fullname.toLowerCase().includes(query); 
-      });
-      return qulified_players;
+  components: { searchResults, SortBar },
+  data() {
+      return {
+        results: [],
+        searchQuery:"",
+        selectedMainSearch: 'player',
+        mainFilterOptions: [
+          { text: 'player', value: 'player' },
+          { text: 'team', value: 'team' },
+        ],
+        mainSortOptions: [
+          { text: 'ABC', value: 'abc' },
+          { text: 'TEAM NAME', value: 'team_name' },
+        ]
+      };
     },
-    filterTeamBySearch(){
-      debugger;
-      if (this.searchQuery  == "")
-        return [];
-      let query = this.searchQuery;
-      let qulified_teams = this.$root.store.state.search.all_teams.filter(t => {
-        return t.team_name.toLowerCase().includes(query); 
-      });
-      return qulified_teams;
+    methods: {
+      saveResults(search_results){
+        this.results = search_results;
+      },
+
+      SortResults(sortby){
+        this.results.sort(function(a,b){
+            debugger;
+            let nameA = a[sortby];
+            let nameB = b[sortby];
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          // names must be equal
+          return 0;
+      })
     }
-  }
-  
+    },
+    computed: {
+      filterPlayerBySearch(){
+        if (this.searchQuery  == ""){
+          return [];
+        }
+        let query = this.searchQuery;
+        let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
+          return pl.fullname.toLowerCase().includes(query); 
+        });
+        this.saveResults(qulified_players);
+        return qulified_players;
+      },
+      filterTeamBySearch(){
+        if (this.searchQuery  == ""){
+          return [];
+        }
+        let query = this.searchQuery;
+        let qulified_teams = this.$root.store.state.search.all_teams.filter(t => {
+          return t.team_name.toLowerCase().includes(query); 
+        });
+        this.saveResults(qulified_teams);
+        return qulified_teams;
+      }
+    }
+    
 }
 </script>
 
@@ -77,6 +96,7 @@ export default {
 
 #search-input {
   margin-left: 20px; 
+  margin-bottom: 20px;
   width: 500px; 
 }
 </style>

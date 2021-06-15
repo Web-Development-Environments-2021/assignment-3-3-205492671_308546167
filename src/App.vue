@@ -30,13 +30,22 @@
 export default {
   name: "App",
   methods: {
-    Logout() {
-      this.$root.store.logout();
+    async Logout() {
+      try {
+        const response = await this.axios.get(
+          "http://localhost:4000/user/logout", {withCredentials: true}
+      );
+      this.$root.store.actions.logout();
       this.$root.toast("Logout", "User logged out successfully", "success");
 
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
+      }
+      catch (error) {
+        console.log("error in search players")
+        console.log(error);
+      }
     },
     async getAllPlayres(){
       console.log("getting players")

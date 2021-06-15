@@ -1,13 +1,16 @@
 <template>
     <b-form-group v-slot="{ ariaDescribedby }">
-    <b-form-radio-group
+    <div class="sort_container">
+    <p>sort by:</p>
+    <b-form-radio-group class = "b_form"
     id="btn-radios-1"
     v-model="selectedSort"
     :options="options"
     :aria-describedby="ariaDescribedby"
     name="radios-btn-MainSort"
-    buttons
-    ></b-form-radio-group>
+    buttons>
+    </b-form-radio-group>
+    </div>
     <p v-if="selectedSort">sorting by: {{selectsort}}</p>
 </b-form-group>
 </template>
@@ -35,6 +38,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+.sort_container{
+    /* border: solid 2px red; */
+    display: flex;
+}
+
+.b_form{
+    margin-left: 20px;
+}
 </style>

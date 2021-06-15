@@ -78,7 +78,7 @@ export default {
           return 0;
       })
     },
-    filterResults(filterby, value){
+    FilterResults(filterby, value){
       results = this.results.filter(e => e[filterby] == value)
     }
   },

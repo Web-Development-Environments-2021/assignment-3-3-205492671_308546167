@@ -7,6 +7,10 @@ const state = {
         matches: [],
         fresh: false // indicates whater need to bring favorite matches from server
     },
+    season_matches: {
+        matches: [],
+        fresh: false
+    },
     search: {
         all_players: [],
         all_teams: [
@@ -37,10 +41,13 @@ const actions = {
     state.user.username = undefined;
     },
     setFavoriteMatches(favorite_matches) {
-
-    let freshness = state.favorite_matches.fresh;
-    state.favorite_matches.matches = favorite_matches;
-    state.favorite_matches.fresh = !freshness;
+        let freshness = state.favorite_matches.fresh;
+        state.favorite_matches.matches = favorite_matches;
+        state.favorite_matches.fresh = !freshness;
+    },
+    setSeasonMatches(season_matches) {
+        state.season_matches.matches = season_matches;
+        state.favorite_matches.fresh = !state.season_matches.fresh;
     },
     setPlayers(players){
         state.search.all_players = players;

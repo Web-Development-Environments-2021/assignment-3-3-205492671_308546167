@@ -40,13 +40,36 @@ import GamePreview from '../components/GamePreview.vue';
 import PlayerPreview from '../components/PlayerPreview.vue';
 export default {
   components: { PlayerPreview, GamePreview },
-    data() {
-      return {
-        players: this.$root.store.state.teams.team_players,
-        post_played_matches: this.$root.store.state.teams.post_played_matches,
-        pre_played_matches: this.$root.store.state.teams.pre_played_matches
-        
-      };
+  data() {
+    return {
+      // players: this.$root.store.state.teams.team_players,
+      // post_played_matches: this.$root.store.state.teams.post_played_matches,
+      // pre_played_matches: this.$root.store.state.teams.pre_played_matches
+      players: [],
+      post_played_matches: [],
+      pre_played_matches: []
+    };
+  },
+  methods: {
+    async getTeamDetails(){
+      try {
+        let team_id = this.$route.params.id.slice(1);
+        const response = await this.axios.get(
+          'http://localhost:4000/team/page/' + team_id ,
+          {withCredentials: true}
+        );
+        this.players = response.data.team_players;
+        this.post_played_matches = response.data.post_played_matches;
+        this.pre_played_matches = response.data.pre_played_matches;
+ 
+      } catch (error) {
+        console.log(error);
+        this.$router.push("/").catch(()=>{});
+      }
+    },
+  },
+  created(){
+    this.getTeamDetails();
   }
 
 }
@@ -56,5 +79,9 @@ export default {
 .labels{
   color:whitesmoke;
   text-align: center;
+}
+#team-players {
+  display: inline-flex;
+
 }
 </style>

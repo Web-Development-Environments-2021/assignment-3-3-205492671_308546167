@@ -124,7 +124,7 @@ export default {
         );
         debugger;
         this.$root.store.actions.login(this.form.username, response.data.roles);
-        this.$router.push("/").catch(()=>{});;
+        this.$router.push("/").catch(()=>{});
       } catch (err) {
         console.log(err.response);
         this.form.submitError = err.response.data.message;

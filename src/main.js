@@ -30,7 +30,9 @@ import {
   SpinnerPlugin,
   TablePlugin,
   ModalPlugin,
-  CalendarPlugin
+  CalendarPlugin,
+  ListGroupPlugin,
+  BadgePlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -48,7 +50,10 @@ import {
   SpinnerPlugin,
   FormRadioPlugin,
   ModalPlugin,
-  CalendarPlugin
+  CalendarPlugin,
+  FormRadioPlugin,
+  ListGroupPlugin,
+  BadgePlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

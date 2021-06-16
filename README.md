@@ -1,17 +1,23 @@
 task todo:
-
-1) playerPage - naor
-2) TeamPage - naor
-3)  teamshortdsiply - naor
-4)  logout = check?!?
-5)  leagueMangmentPage
-    11.1) create match - liad
-    11.2) add score
-    11.3) add event
-    11.4) add referee
-    11.5) add ref to league
-6)  MainPage
-    12.1) leagueSummrisedInfo componenet - liad
-7)  NavBar - naor
-8)  AboutPage - naor
-9)  currentfixturePage = bugs - liad
+1) login:
+   1.1) login move code to our server = done
+   1.2) vulidate = done
+2) register = done
+3) search - liad
+    3.1 player serach
+    3.2 team search
+4) gameFavorites component = done
+5) game disply component = done
+6) playerPage - naor
+7) TeamPage
+8) playerPreview
+9)  teamshortdsiply
+10) logout
+11) leagueMangmentPage
+    11.1) create match
+12) MainPage
+    12.1) leagueSummrisedInfo componenet
+13) NavBar
+14) AboutPage
+15) currentfixturePage = bugs
+this.$router.parmas.p_id

@@ -88,7 +88,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
-  background-image: url(".\\assets\\field.jpg");
+  background-image: url(".\\assets\\grass.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

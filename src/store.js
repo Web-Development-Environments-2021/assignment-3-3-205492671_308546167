@@ -135,7 +135,7 @@ const actions = {
     },
     setSeasonMatches(season_matches) {
         state.season_matches.matches = season_matches;
-        state.favorite_matches.fresh = !state.season_matches.fresh;
+        state.favorite_matches.fresh = true;
     },
     setPlayers(players){
         state.search.all_players = players;

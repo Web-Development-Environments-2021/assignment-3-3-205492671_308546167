@@ -17,14 +17,14 @@
           <b-col cols="3">Home Team</b-col>
           <b-col>
             <b-form-select
-              v-model="headerBgVariant"
+              v-model="home_team"
               :options="teams"
             ></b-form-select>
           </b-col>
           <b-col cols="3">Away Team</b-col>
           <b-col>
             <b-form-select
-              v-model="headerTextVariant"
+              v-model="away_team"
               :options="teams"
             ></b-form-select>
           </b-col>
@@ -33,7 +33,7 @@
         <b-row class="mb-1">
           <b-col cols="3">Date</b-col>
           <b-col>
-            <b-calendar v-model="picked_date" @context="onContext" locale="en-US"></b-calendar>
+            <b-calendar v-model="picked_date" :min="getToday" :max="getEndSeason" @context="onContext" locale="en-US"></b-calendar>
           </b-col>
         </b-row>
         <br>
@@ -85,7 +85,25 @@
         headerTextVariant: 'light',
         bodyBgVariant: 'light',
         bodyTextVariant: 'dark',
-        footerTextVariant: 'dark'
+        footerTextVariant: 'dark',
+        home_team: '',
+        away_team: ''
+
+      }
+    },
+    computed: {
+      getToday(){
+        const now = new Date()
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+        // 15th two months prior
+        return new Date(today)
+      },
+      getEndSeason(){
+        const now = new Date();
+        return new Date(now.getFullYear()+1, now.getMonth(), now.getDate());
+      },
+      matchDate(){
+        return this.picked_date + "T" + "21:00:00"
       }
     },
     methods: {
@@ -93,9 +111,12 @@
         this.context = ctx
       },
       onSave(){
-          debugger;
-          let match = this.teams
-          let date = this.picked_date
+        let match = {home_team_name: this.home_team,
+                     away_team_name: this.away_team,
+                     date: this.matchDate,
+                     referee_name: this.referee_name}
+        this.$emit('add-match', match);
+        this.show = false;
       }
     }
   }

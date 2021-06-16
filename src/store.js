@@ -118,7 +118,6 @@ const state = {
             }
           ]
     }
-
 }
 const actions = {
     login(username, roles) {

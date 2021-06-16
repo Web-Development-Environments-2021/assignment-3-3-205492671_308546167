@@ -37,7 +37,7 @@
 
 <script>
 import GamePreview from '../components/GamePreview.vue';
-import PlayerPreview from '../components/PlayerPreview.vue'
+import PlayerPreview from '../components/PlayerPreview.vue';
 export default {
   components: { PlayerPreview, GamePreview },
     data() {
@@ -45,6 +45,7 @@ export default {
         players: this.$root.store.state.teams.team_players,
         post_played_matches: this.$root.store.state.teams.post_played_matches,
         pre_played_matches: this.$root.store.state.teams.pre_played_matches
+        
       };
   }
 

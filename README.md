@@ -5,7 +5,6 @@ task todo:
 3)  teamshortdsiply - naor
 4)  logout = check?!?
 5)  leagueMangmentPage
-    11.1) create match - liad
     11.2) add score
     11.3) add event
     11.4) add referee
@@ -14,4 +13,5 @@ task todo:
     12.1) leagueSummrisedInfo componenet - liad
 7)  NavBar - naor
 8)  AboutPage - naor
-9)  currentfixturePage = bugs - liad
+9)  validate create match
+10) teams with weird chercthers wont enter sportmonks

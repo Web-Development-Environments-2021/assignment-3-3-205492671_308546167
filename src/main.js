@@ -28,7 +28,8 @@ import {
   InputGroupPlugin,
   FormRadioPlugin,
   SpinnerPlugin,
-  TablePlugin
+  TablePlugin,
+  ModalPlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -44,7 +45,8 @@ import {
   InputGroupPlugin,
   TablePlugin,
   SpinnerPlugin,
-  FormRadioPlugin
+  FormRadioPlugin,
+  ModalPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

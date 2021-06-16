@@ -44,7 +44,10 @@
 </template>
 
 <script>
+import event from '../components/event.vue'
 export default {
+  components: { event },
+
   data(){
     return{
       pre_matches: [],

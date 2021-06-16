@@ -27,6 +27,7 @@ import {
   LayoutPlugin, 
   InputGroupPlugin,
   FormRadioPlugin,
+  SpinnerPlugin,
   TablePlugin
 } from "bootstrap-vue";
 [
@@ -42,6 +43,7 @@ import {
   LayoutPlugin, 
   InputGroupPlugin,
   TablePlugin,
+  SpinnerPlugin,
   FormRadioPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);

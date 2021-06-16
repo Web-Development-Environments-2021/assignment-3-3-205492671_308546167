@@ -3,20 +3,39 @@
       <h2> League Management Page </h2>
       <b-row>
         <b-col md="10">
-          <b-form-input v-model="filter" type="search" placeholder="search"></b-form-input>
+          <!-- <b-form-input v-model="filter" type="search" placeholder="search"></b-form-input> -->
         </b-col>
       </b-row>
-      <b-row>
-        <b-col>
-          <b-table striped hover :items="season_matches" :fields="fields" filter="filter"></b-table>
-          </b-col>
-      </b-row>
+
+    <b-table striped hover :items="season_matches" :fields="fields" :busy="isBusy" responsive="sm" class="mt-3" outlined>
+      <template #table-busy>
+        <div class="text-center text-danger my-2">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong>Loading...</strong>
+        </div>
+      </template>
+
+      <template #cell(eventlog)="row">
+        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+          {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
+        </b-button>
+      </template>
+
+      <template #row-details="row">
+        <div class="eventlog">
+          <event v-for="e in row.item.eventlog" :event="e" :key="e.min_in_game"></event>
+        </div>
+      </template>
+    </b-table>
+
 
   </div>
 </template>
 
 <script>
+import event from '../components/event.vue'
 export default {
+  components: { event },
   name: "leagueMangment",
   data(){
     return{
@@ -61,8 +80,13 @@ export default {
             sortable: true
           },
           {
-            key: 'score',
+            key: 'eventlog',
             sortable: false
+          },
+          {
+            key: 'score',
+            sortable: false,
+            editable: true
           }
         ],
     }
@@ -100,6 +124,16 @@ export default {
       }
     }
   },
+  computed: {
+    isBusy() {
+        if (!this.season_matches.length){
+          console.log("im busy")
+          return true;
+        }
+        console.log("im cool")
+        return false;
+      }
+  },
   created(){
     this.getSeasonMatches();
   }
@@ -107,6 +141,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.eventlog {
+  display: flex;
+  border: 2px red;
+}
 
 </style>

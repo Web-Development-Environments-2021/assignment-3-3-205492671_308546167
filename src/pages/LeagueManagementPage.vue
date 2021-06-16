@@ -27,15 +27,19 @@
         </div>
       </template>
     </b-table>
+    <div class="c-match-button">
+    <create-match :add-match="addMatch"></create-match>
+    </div>
 
 
   </div>
 </template>
 
 <script>
+import CreateMatch from '../components/createMatch.vue'
 import event from '../components/event.vue'
 export default {
-  components: { event },
+  components: { event, CreateMatch },
   name: "leagueMangment",
   data(){
     return{
@@ -109,14 +113,14 @@ export default {
         console.log(error);
       }
     },
-    async addMatche(id){
+    async addMatch(match){
       try {
         const response = await this.axios.post(
           "http://localhost:4000/user/union_representative/match",
-          {match: id},
+          {match},
           {withCredentials: true}
         );
-        this.season_matches.push({match: id});
+        this.season_matches.push({match});
         this.$root.store.actions.setSeasonMatches(this.season_matches);
       } catch (error) {
         console.log("error in enter match")
@@ -145,6 +149,9 @@ export default {
 .eventlog {
   /* display: flex;
   border: 2px red; */
+}
+.c-match-button{
+  float: right;
 }
 
 </style>

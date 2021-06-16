@@ -32,7 +32,8 @@ import {
   ModalPlugin,
   CalendarPlugin,
   ListGroupPlugin,
-  BadgePlugin
+  BadgePlugin,
+  ImagePlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -53,7 +54,8 @@ import {
   CalendarPlugin,
   FormRadioPlugin,
   ListGroupPlugin,
-  BadgePlugin
+  BadgePlugin,
+  ImagePlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

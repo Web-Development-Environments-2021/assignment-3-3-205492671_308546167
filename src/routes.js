@@ -20,14 +20,14 @@ const routes = [
         component: () => import("./pages/SearchPage") 
     },
     {
-        // path: "/player/page:id",
-        path: "/player",
+        path: "/player/page:id",
+        // path: "/player",
         name: "player Page",
         component: () => import("./pages/PlayerPage") 
     },
     {
-        path: "/player/page:id",
-        // path: "/playerPreview",
+        // path: "/player/page:id",
+        path: "/playerPreview",
         name: "player Page preview",
         component: () => import("./components/PlayerPreview") 
     },
@@ -51,11 +51,6 @@ const routes = [
         path: "/leagueManagement",
         name: "League Management Page",
         component: () => import("./pages/LeagueManagementPage") 
-    },
-    {
-        path: "/about",
-        name: "About",
-        component: () => import("./pages/AboutPage") 
     },
     {
         path: "*",

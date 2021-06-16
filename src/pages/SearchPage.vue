@@ -129,7 +129,8 @@ export default {
 
 .search_results{
   /* border: solid 2px green; */
-  margin-left: 250px ;
+  margin-left: 450px ;
+  display: flex;
 }
 
 .sort_bar{

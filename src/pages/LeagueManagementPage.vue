@@ -28,7 +28,7 @@
       </template>
     </b-table>
     <div class="c-match-button">
-    <create-match :add-match="addMatch"></create-match>
+    <create-match v-on:add-match="addMatch"></create-match>
     </div>
 
 
@@ -115,13 +115,17 @@ export default {
     },
     async addMatch(match){
       try {
+        debugger;
         const response = await this.axios.post(
-          "http://localhost:4000/user/union_representative/match",
-          {match},
+          "http://localhost:4000/user/union_representative/match",{
+          home_team_name: match.home_team_name,
+          away_team_name: match.away_team_name,
+          date: match.date,
+          referee_name: match.referee_name},
           {withCredentials: true}
         );
-        this.season_matches.push({match});
-        this.$root.store.actions.setSeasonMatches(this.season_matches);
+        console.log(response);
+        this.getSeasonMatches();
       } catch (error) {
         console.log("error in enter match")
         console.log(error);

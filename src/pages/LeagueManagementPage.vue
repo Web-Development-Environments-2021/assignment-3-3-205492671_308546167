@@ -143,8 +143,8 @@ export default {
 
 <style scoped>
 .eventlog {
-  display: flex;
-  border: 2px red;
+  /* display: flex;
+  border: 2px red; */
 }
 
 </style>

@@ -27,8 +27,8 @@
 
   </div>
   <div class="search_results">
-    <search-results v-if="selectedMainSearch == 'team' && filterTeamBySearch" :results="results" :selectedMainSearch="selectedMainSearch" ></search-results>
-    <search-results v-if="selectedMainSearch == 'player' && filterPlayerBySearch" :results="results" :selectedMainSearch="selectedMainSearch" ></search-results>
+    <search-results v-if="selectedMainSearch == 'team' && filterTeamBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
+    <search-results v-if="selectedMainSearch == 'player' && filterPlayerBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
   </div>
     <br/>
   </div>
@@ -65,7 +65,6 @@ export default {
 
       SortResults(sortby){
         this.results.sort(function(a,b){
-            debugger;
             let nameA = a[sortby];
             let nameB = b[sortby];
             if (nameA < nameB) {
@@ -79,7 +78,7 @@ export default {
       })
     },
     FilterResults(filterby, value){
-      results = this.results.filter(e => e[filterby] == value)
+      this.results = this.results.filter(e => e[filterby] == value)
     }
   },
   computed: {

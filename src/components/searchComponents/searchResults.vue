@@ -1,13 +1,20 @@
 <template>
 <div>
-  <div v-if="selectedMainSearch == 'player'">
+  <div v-if="selectedMainSearch == 'player' && emptyQuery">
       <div v-for="p in results" :key="p.player_id">
           <span>
-            {{p.fullname}}
+            <player-preview
+              :player_id="p.player_id"
+              :fullname="p.fullname" 
+              :team_name="p.team_name" 
+              :position_num="p.position_num" 
+              :picture="p.picture" 
+              :key="p.fullname">
+            </player-preview>
           </span>
       </div>
     </div>
-    <div v-if="selectedMainSearch == 'team'">
+    <div v-if="selectedMainSearch == 'team' && emptyQuery">
       <div v-for="t in results" :key="t.team_id">
           <span>
             {{t.team_name}}
@@ -21,7 +28,9 @@
 </template>
 
 <script>
+import PlayerPreview from '../PlayerPreview.vue';
 export default {
+    components: { PlayerPreview },
     props: {
         results:{
             type: Array,
@@ -30,7 +39,11 @@ export default {
         selectedMainSearch: {
             type: String,
             required: true
-        }
+        },
+        emptyQuery: { 
+            type: String,
+            required: true
+          }
     }
 
 }

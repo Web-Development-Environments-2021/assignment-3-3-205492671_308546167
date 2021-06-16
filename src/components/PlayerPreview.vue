@@ -29,7 +29,7 @@ export default {
     name: "PlayerPreview",
     props: {
         player_id: {
-            type: String,
+            type: Number,
             required: true
         },
         fullname: {
@@ -41,8 +41,8 @@ export default {
             required: true,
         },
         position_num: {
-            type: String,
-            required: true
+            type: Number,
+            required: false
         },
         picture: {
             type: String,

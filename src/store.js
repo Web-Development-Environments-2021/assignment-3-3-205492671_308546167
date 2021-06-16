@@ -66,7 +66,7 @@ const state = {
             "picture": "https://cdn.sportmonks.com/images/soccer/players/8/61736.png",
             "position_num": "2"
           }],
-          "matches": [
+          "post_played_matches": [
             {
               "match_id": "1",
               "home_team": "Silkeborg",
@@ -86,6 +86,21 @@ const state = {
                 }
               ],
               "score": "3-0"
+            }
+          ],
+          "pre_played_matches": [
+            {
+              "match_id": "1",
+              "home_team": "Silkeborg",
+              "away_team": "Midtjylland",
+              "league": "271",
+              "season": "2021/2022",
+              "court": "1121",
+              "stage": "Regular Season",
+              "referee_name": "ref",
+              "date": "2021-06-05",
+              "eventlog": [],
+              "score": ""
             }
           ]
     }

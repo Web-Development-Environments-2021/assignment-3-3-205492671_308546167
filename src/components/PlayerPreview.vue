@@ -8,7 +8,7 @@
                 bg-variant="light"
             >
                 <template #header>
-                <h4 class="mb-0" id="player-name-label">{{ fullname }}</h4>
+                <h4 class="mb-0" id="player-name-label" @click="goToPlayerPage()">{{ fullname }}</h4>
                 </template> 
                 
                 <b-list-group flush id = "list-group">
@@ -28,6 +28,10 @@
 export default {
     name: "PlayerPreview",
     props: {
+        player_id: {
+            type: String,
+            required: true
+        },
         fullname: {
             type: String,
             required: true,
@@ -44,7 +48,14 @@ export default {
             type: String,
             required: true
         }
-    }
+    },
+    methods: {
+        goToPlayerPage(){
+            let path = '/player/page:' + this.player_id
+            this.$router.push(path)
+        }
+
+    },
 
 }
 </script>

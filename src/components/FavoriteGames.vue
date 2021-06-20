@@ -5,6 +5,8 @@
       :id="g.match_id" 
       :home_team="g.home_team" 
       :away_team="g.away_team" 
+      :home_team_logo="g.home_team_logo" 
+      :away_team_logo="g.away_team_logo" 
       :date="g.date" 
       :court="g.court"
       :key="g.id"></GamePreview>

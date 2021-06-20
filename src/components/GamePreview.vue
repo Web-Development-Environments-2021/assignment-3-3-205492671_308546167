@@ -5,19 +5,18 @@
                 <span>{{ home_team }}</span>
                 <br>
                 <span><img class="logo" v-bind:src="home_team_logo"></span></div>
-            <div id="score-label"><br><span>1-0</span></div>
-            <div id="team-name">
-                <span>{{ away_team }}</span>
-                <br>
-                <span><img class="logo" v-bind:src="away_team_logo"></span> </div>
-            <div>
-            </div>
-            <div>
+            <div id="middle-col">
+              <span id="score">1:0</span><br><br>
               <span>{{ court }}</span><br>
               <span>{{ getDate }}</span><br>
               <span>{{ getTime }}</span>
             </div>
-            <div></div>
+            <div id="team-name">
+                <span>{{ away_team }}</span>
+                <br>
+                <span><img class="logo" v-bind:src="away_team_logo"></span> </div>
+            
+          
         </div>
     </div>
 
@@ -60,6 +59,11 @@ export default {
         type: String,
         required: true
       }
+      ,
+      score: {
+        type: String,
+        required: true
+      }
   },
   computed: {
     // a computed getter
@@ -82,10 +86,12 @@ export default {
 .grid {
   border-style: solid;
   border-color: white;
-  width:500px;
+  width:33%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  font-family: "Copperplate", fantasy;
+  /* font-family: "Copperplate", fantasy;
+   */
+   font-family: "Arial", San-serif;
 }
 
 .grid > div {
@@ -95,19 +101,26 @@ font-size: medium;
 padding: 10px;
 text-align: center;
 }
+
 #team-name{
     color: #90a8ac;
-    font-size: 3vw;
+    font-size: 2vw;
 }
-#score-label{
+#middle-col{
     color: white;
-    font-size: 3vw;
+    font-size: 1vw;
+}
+#score{
+    color: white;
+    font-size: 2vw;
 }
 .logo {
-    height: 70px;
-    width:70px;
+    height: 60%;
+    width:60%;
     /* border-radius: 50%; */
 }
+
+
 
 
 

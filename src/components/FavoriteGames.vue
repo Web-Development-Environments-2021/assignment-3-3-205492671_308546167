@@ -9,6 +9,7 @@
       :away_team_logo="g.away_team_logo" 
       :date="g.date" 
       :court="g.court"
+      :score="g.score"
       :key="g.id"></GamePreview>
   </div>
 </template>

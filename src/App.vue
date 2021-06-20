@@ -7,19 +7,23 @@
 
         <b-nav-item :to="{ name: 'Search Page' }">Search</b-nav-item>
         </b-navbar-nav>
-        <b-navbar-nav class="ml-auto" v-if="!$root.store.state.user.username">
+        <b-navbar-nav v-if="!$root.store.state.user.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
           <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
         </b-navbar-nav>
-        <b-navbar-nav class="ml-auto" v-else>
-        <b-nav-item-dropdown right>
-          <template #button-content>
-            User
-          </template>
-          <b-dropdown-item href="#">Favorites</b-dropdown-item>
-          <b-dropdown-item href="#" v-on:click=Logout >Log Out</b-dropdown-item>
-        </b-nav-item-dropdown>
+        <b-navbar-nav v-else>
+          <b-nav-item href="#" v-if="isUni">LeagueMangement</b-nav-item>
+          <b-nav-item href="#">Favorites</b-nav-item>
+          <b-nav-item href="#" v-on:click=Logout >Log Out</b-nav-item>
         </b-navbar-nav>
+
+        <b-navbar-nav v-if="$root.store.state.user.username" class="ml-auto d-flex align-items-center">
+          <b-avatar class="mr-3" variant="info" src="https://placekitten.com/300/300">
+                <template v-if="isUni" #badge><b-icon icon="star-fill"></b-icon></template>
+          </b-avatar>
+           <span class="user-name mr-auto">liad oz</span>
+        </b-navbar-nav>
+
       </b-collapse>
     </b-navbar>
     <router-view />
@@ -73,6 +77,11 @@ export default {
       }
     }
   },
+  computed: {
+    isUni(){
+      return this.$root.store.state.user.roles.includes("union_rep")
+    }
+  },
   created(){
     // this.getAllPlayres();
     // this.getAllTeams();
@@ -84,7 +93,7 @@ export default {
 @import "@/scss/form-style.scss";
 
 #app {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -107,6 +116,13 @@ export default {
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+
+.user-name {
+  color: white;
+  font-weight: bold;
+  // padding: 10px;
+  
 }
 
 #nav a.router-link-exact-active {

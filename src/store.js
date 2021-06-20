@@ -1,6 +1,6 @@
 const state = {
     user: {
-        username: "guest",
+        username: "",
         roles: []
     },
     favorite_matches: {

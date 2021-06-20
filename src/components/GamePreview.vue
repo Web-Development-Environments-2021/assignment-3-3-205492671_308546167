@@ -1,40 +1,27 @@
 <template>
   <div>
-    <div class="jumbotron">
         <div class="grid">
             <div id="team-name">
-                <span>Chelsea</span>
+                <span>{{ home_team }}</span>
                 <br>
-                <span><img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png"></span></div>
+                <span><img class="logo" v-bind:src="home_team_logo"></span></div>
             <div id="score-label"><br><span>1-0</span></div>
             <div id="team-name">
-                <span>Barcelona</span>
+                <span>{{ away_team }}</span>
                 <br>
-                <span><img class="logo" src="https://www.logolynx.com/images/logolynx/7b/7b831ccf50ee884443dee6d5b6e6dd67.jpeg"></span> </div>
-            <div></div>
+                <span><img class="logo" v-bind:src="away_team_logo"></span> </div>
             <div>
-                <span>Blumfield</span><br>
-                <span>05/08/2021</span><br>
-                <span>19:30</span>
+            </div>
+            <div>
+              <span>{{ court }}</span><br>
+              <span>{{ getDate }}</span><br>
+              <span>{{ getTime }}</span>
             </div>
             <div></div>
         </div>
-      <div class="game-preview">
-          <div :title="id" class="game-title">
-            <b>Game Id:</b> {{ id }}
-          </div>
-          <ul class="game-content">
-            <li> host: {{ home_team }}</li>
-            <li> guest: {{ away_team }}</li>
-            <li> date: {{ getDate }}</li>
-            <li> time: {{ getTime }}</li>
-            <li> court: {{ court }}</li>
-          </ul>
-      </div>
     </div>
 
 
-  </div>
   
   
 </template>
@@ -63,6 +50,16 @@ export default {
         type: String,
         required: true
       }
+      ,
+      home_team_logo: {
+        type: String,
+        required: true
+      }
+      ,
+      away_team_logo: {
+        type: String,
+        required: true
+      }
   },
   computed: {
     // a computed getter
@@ -82,58 +79,37 @@ export default {
 <style>
 
 
-
-.game-preview {
-  display: inline-block;
-  width: 250px;
-  height: 200px;
-  position: relative;
-  margin: 10px 10px;
+.grid {
   border-style: solid;
-  border-radius: 10px;
-  border-width: 5px;
-  border-color:cadetblue;
+  border-color: white;
+  width:500px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-family: "Copperplate", fantasy;
 }
 
-.game-preview .game-title {
-  text-align: center;
-  text-transform: uppercase;
-  color:  rgb(111, 197, 157);
+.grid > div {
+background-color: #374d51;
+color: white;
+font-size: medium;
+padding: 10px;
+text-align: center;
 }
-
-.game-preview .game-content {
-  width: 100%;
-  overflow: hidden;
+#team-name{
+    color: #90a8ac;
+    font-size: 3vw;
 }
-
-    .grid {
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    /* grid-gap: 1px; */
-    font-family: "Copperplate", fantasy;
-    }
-
-    .grid > div {
-    background-color: #374d51;
+#score-label{
     color: white;
     font-size: 3vw;
-    padding: 10px;
-    text-align: center;
-    }
-    #team-name{
-        color: #90a8ac;
-        font-size: 4vw;
-    }
-    #score-label{
-        color: white;
-        font-size: 4vw;
-    }
-    .logo {
-        height: 100px;
-        width:100px;
-        border-radius: 50%;
-    }
+}
+.logo {
+    height: 70px;
+    width:70px;
+    /* border-radius: 50%; */
+}
+
+
 
 </style>
 

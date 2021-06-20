@@ -100,7 +100,7 @@ new Vue({
     toast(title, content, variant = null, append = false) {
       this.$bvToast.toast(`${content}`, {
         title: `${title}`,
-        toaster: "b-toaster-top-center",
+        toaster: "b-toaster-top-right",
         variant: variant,
         solid: true,
         appendToast: append,

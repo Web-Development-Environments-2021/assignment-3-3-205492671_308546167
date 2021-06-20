@@ -17,7 +17,7 @@
             User
           </template>
           <b-dropdown-item href="#">Favorites</b-dropdown-item>
-          <b-dropdown-item href="#">Log Out</b-dropdown-item>
+          <b-dropdown-item href="#" v-on:click=Logout >Log Out</b-dropdown-item>
         </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -31,19 +31,20 @@ export default {
   name: "App",
   methods: {
     async Logout() {
+      debugger;
       try {
-        const response = await this.axios.get(
-          "http://localhost:4000/user/logout", {withCredentials: true}
+        const response = await this.axios.put(
+          "http://localhost:4000/user/logout", {}, {withCredentials: true}
       );
       this.$root.store.actions.logout();
       this.$root.toast("Logout", "User logged out successfully", "success");
-
+      this.$root.store.actions.logout();
       this.$router.push("/").catch(() => {
         this.$forceUpdate();
       });
       }
       catch (error) {
-        console.log("error in search players")
+        console.log("error in logout")
         console.log(error);
       }
     },

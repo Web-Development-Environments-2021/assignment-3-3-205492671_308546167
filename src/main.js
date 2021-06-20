@@ -33,6 +33,8 @@ import {
   CalendarPlugin,
   ListGroupPlugin,
   BadgePlugin,
+  AvatarPlugin,
+  IconsPlugin,
   ImagePlugin
 } from "bootstrap-vue";
 [
@@ -55,6 +57,8 @@ import {
   FormRadioPlugin,
   ListGroupPlugin,
   BadgePlugin,
+  AvatarPlugin,
+  IconsPlugin,
   ImagePlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);

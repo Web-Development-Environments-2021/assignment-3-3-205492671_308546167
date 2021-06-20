@@ -39,12 +39,10 @@
 import GamePreview from '../components/GamePreview.vue';
 import PlayerPreview from '../components/PlayerPreview.vue';
 export default {
+  name: "team-Page",
   components: { PlayerPreview, GamePreview },
   data() {
     return {
-      // players: this.$root.store.state.teams.team_players,
-      // post_played_matches: this.$root.store.state.teams.post_played_matches,
-      // pre_played_matches: this.$root.store.state.teams.pre_played_matches
       players: [],
       post_played_matches: [],
       pre_played_matches: []
@@ -53,7 +51,7 @@ export default {
   methods: {
     async getTeamDetails(){
       try {
-        let team_id = this.$route.params.id.slice(1);
+        let team_id = this.$route.params.id;
         const response = await this.axios.get(
           'http://localhost:4000/team/page/' + team_id ,
           {withCredentials: true}

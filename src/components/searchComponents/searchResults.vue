@@ -16,9 +16,12 @@
     </div>
     <div v-if="selectedMainSearch == 'team' && emptyQuery">
       <div v-for="t in results" :key="t.team_id">
-          <span>
-            {{t.team_name}}
-          </span>
+          <team-preview 
+          :team_id="t.team_id"
+          :team_name="t.team_name"
+          :team_logo="t.image"
+          :key="t.team_id">
+          </team-preview>
       </div>
     </div>
     <p v-if="!results.length">
@@ -29,8 +32,9 @@
 
 <script>
 import PlayerPreview from '../PlayerPreview.vue';
+import TeamPreview from '../teamPreview.vue';
 export default {
-    components: { PlayerPreview },
+    components: { PlayerPreview, TeamPreview },
     props: {
         results:{
             type: Array,

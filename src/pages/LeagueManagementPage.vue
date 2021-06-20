@@ -115,7 +115,6 @@ export default {
     },
     async addMatch(match){
       try {
-        debugger;
         const response = await this.axios.post(
           "http://localhost:4000/user/union_representative/match",{
           home_team_name: match.home_team_name,
@@ -124,11 +123,10 @@ export default {
           referee_name: match.referee_name},
           {withCredentials: true}
         );
-        console.log(response);
+        this.$root.toast("create match", "match was created successfully", "success");
         this.getSeasonMatches();
       } catch (error) {
-        console.log("error in enter match")
-        console.log(error);
+        this.$root.toast("create match", error.response.data, "danger");
       }
     }
   },

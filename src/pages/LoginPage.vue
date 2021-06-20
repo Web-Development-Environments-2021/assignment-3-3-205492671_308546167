@@ -122,7 +122,6 @@ export default {
             password: this.form.password
           }, {withCredentials: true}
         );
-        debugger;
         this.$root.store.actions.login(this.form.username, response.data.roles);
         this.$router.push("/").catch(()=>{});
       } catch (err) {

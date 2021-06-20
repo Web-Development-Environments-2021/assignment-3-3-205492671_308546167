@@ -30,16 +30,23 @@
     <div class="c-match-button">
     <create-match v-on:add-match="addMatch"></create-match>
     </div>
+    <div class="r-add-button">
+    <add-referee v-on:add-referee="addReferee" :button_name="'Add Referee'"></add-referee>
+    </div>
+    <div class="r-add-button">
+    <add-referee v-on:add-referee="assignReferee" :button_name="'Assign referee to league'"></add-referee>
+    </div>
 
 
   </div>
 </template>
 
 <script>
-import CreateMatch from '../components/createMatch.vue'
+import CreateMatch from '../components/LeagueMangementButtons/createMatch.vue'
 import event from '../components/event.vue'
+import AddReferee from '../components/LeagueMangementButtons/addReferee.vue'
 export default {
-  components: { event, CreateMatch },
+  components: { event, CreateMatch, AddReferee },
   name: "leagueMangment",
   data(){
     return{
@@ -113,6 +120,7 @@ export default {
         console.log(error);
       }
     },
+
     async addMatch(match){
       try {
         const response = await this.axios.post(
@@ -127,6 +135,32 @@ export default {
         this.getSeasonMatches();
       } catch (error) {
         this.$root.toast("create match", error.response.data, "danger");
+      }
+    },
+
+    async addReferee(referee_name){
+      try {
+        const response = await this.axios.put(
+          "http://localhost:4000/user/union_representative/assign_referee",{referee_name},
+          {withCredentials: true}
+        );
+        this.$root.toast("add referee", "referee was added successfully", "success");
+        this.getSeasonMatches();
+      } catch (error) {
+        this.$root.toast("add referee", error.response.data, "danger");
+      }
+    },
+
+    async assignReferee(referee_name){
+      try {
+        const response = await this.axios.put(
+          "http://localhost:4000/user/union_representative//assign_referee_league",{referee_name},
+          {withCredentials: true}
+        );
+        this.$root.toast("add referee", "referee was added successfully", "success");
+        this.getSeasonMatches();
+      } catch (error) {
+        this.$root.toast("add referee", error.response.data, "danger");
       }
     }
   },
@@ -148,12 +182,14 @@ export default {
 </script>
 
 <style scoped>
-.eventlog {
-  /* display: flex;
-  border: 2px red; */
-}
-.c-match-button{
+
+.c-match-button {
   float: right;
+}
+
+.r-add-button {
+  float: right;
+  margin-right: 10px;
 }
 
 </style>

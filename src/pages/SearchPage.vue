@@ -126,12 +126,12 @@ export default {
   width: max-content; 
   margin-left: 50px;
 }
-
+/* 
 .search_results{
-  /* border: solid 2px green; */
+ 
   margin-left: 450px ;
   display: flex;
-}
+} */
 
 .sort_bar{
   /* border: solid 2px purple; */

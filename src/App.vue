@@ -74,7 +74,7 @@ export default {
     }
   },
   created(){
-    // this.getAllPlayres();
+    this.getAllPlayres();
     // this.getAllTeams();
   }
 };

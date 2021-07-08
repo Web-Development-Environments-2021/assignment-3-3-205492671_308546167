@@ -97,7 +97,8 @@ export default {
           {
             key: 'score',
             sortable: false,
-            editable: true
+            editable: true,
+            required: false
           }
         ],
     }

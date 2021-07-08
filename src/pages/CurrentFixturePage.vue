@@ -1,6 +1,6 @@
 <template>
     <div>
-       <b-table striped hover :items="pre_matches">
+       <b-table striped hover :items="pre_matches" :fields="fields">
          <template #table-busy>
         <div class="text-center text-danger my-2">
           <b-spinner class="align-middle"></b-spinner>
@@ -47,11 +47,59 @@
 import event from '../components/event.vue'
 export default {
   components: { event },
-
+  name: "Current Fixture Page",
   data(){
     return{
       pre_matches: [],
-      post_matches: []
+      post_matches: [],
+      fields: [
+          {
+            key: 'match_id',
+            sortable: false
+          },
+          {
+            key: 'home_team',
+            sortable: true
+          },
+          {
+            key: 'away_team',
+            sortable: true
+          },
+          {
+            key: 'league',
+            sortable: false
+          },
+          {
+            key: 'season',
+            sortable: false
+          },
+          {
+            key: 'court',
+            sortable: false
+          },
+          {
+            key: 'stage',
+            sortable: false
+          },
+          {
+            key: 'referee_name',
+            sortable: false
+          },
+          {
+            key: 'date',
+            sortable: true
+          },
+          {
+            key: 'eventlog',
+            sortable: false
+          },
+          {
+            key: 'score',
+            sortable: false,
+            editable: true,
+            required: false
+          }
+        ],
     }
   },
   methods: {

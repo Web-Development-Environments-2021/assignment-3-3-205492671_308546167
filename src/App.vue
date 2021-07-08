@@ -6,13 +6,14 @@
         <b-navbar-nav>
 
         <b-nav-item :to="{ name: 'Search Page' }">Search</b-nav-item>
+        <b-nav-item :to="{ name: 'Current Fixture Page' }">Current Fixture</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-if="!$root.store.state.user.username">
           <b-nav-item :to="{ name: 'Login' }">Login</b-nav-item>
           <b-nav-item :to="{ name: 'Register' }">Register</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-else>
-          <b-nav-item href="#" v-if="isUni">LeagueMangement</b-nav-item>
+          <b-nav-item :to="{ name: 'League Management Page' }" v-if="isUni">LeagueMangement</b-nav-item>
           <b-nav-item href="#">Favorites</b-nav-item>
           <b-nav-item href="#" v-on:click=Logout >Log Out</b-nav-item>
         </b-navbar-nav>
@@ -83,7 +84,7 @@ export default {
     }
   },
   created(){
-    this.getAllPlayres();
+    // this.getAllPlayres();
     // this.getAllTeams();
   }
 };

@@ -20,6 +20,9 @@ export default {
   name: "FavoriteGames",
   components: {
     GamePreview
+  },
+  props: {
+    num_matches: {type: Number, required: false}
   }, 
   data() {
     return {
@@ -44,6 +47,9 @@ export default {
     if (!this.$root.store.state.favorite_matches.fresh){
       await this.updateGames();
       this.$root.store.actions.setFavoriteMatches(this.games) 
+    }
+    if (this.num_matches){
+      this.games = this.games.splice(this.num_matches)
     }
   }
 };

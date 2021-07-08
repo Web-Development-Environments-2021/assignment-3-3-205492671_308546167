@@ -12,7 +12,8 @@ const state = {
         fresh: false
     },
     search: {
-        all_players: [{"player_id":26722,"fullname":"Stephan Maigaard Andersen","picture":"https://cdn.sportmonks.com/images/soccer/players/2/26722.png","position_num":1,"team_name":"København"},{"player_id":84587,"fullname":"Sten Michael Grytebust","picture":"https://cdn.sportmonks.com/images/soccer/players/11/84587.png","position_num":1,"team_name":"København"},{"player_id":25057,"fullname":"Karl-Johan Johnsson","picture":"https://cdn.sportmonks.com/images/soccer/players/1/25057.png","position_num":1,"team_name":"København"},{"player_id":84494,"fullname":"Victor Nelsson","picture":"https://cdn.sportmonks.com/images/soccer/players/14/84494.png","position_num":2,"team_name":"København"}],
+        all_players: [{"player_id":465302,"fullname":"Arbnor Muçolli","picture":"https://cdn.sportmonks.com/images/soccer/placeholder.png","position_num":3,"team_name":"Vejle"},{"player_id":4192333,"fullname":"German Onugkha","picture":"https://cdn.sportmonks.com/images/soccer/placeholder.png","position_num":4,"team_name":"Vejle"},{"player_id":84022,"fullname":"Lucas Jensen","picture":"https://cdn.sportmonks.com/images/soccer/players/22/84022.png","position_num":3,"team_name":"Vejle"},{"player_id":37288979,"fullname":"Hugo Ekitike","picture":"https://cdn.sportmonks.com/images/soccer/players/19/37288979.png","position_num":4,"team_name":"Vejle"},{"player_id":9606061,"fullname":"Ivan Repyakh","picture":"https://cdn.sportmonks.com/images/soccer/players/13/9606061.png","position_num":3,"team_name":"Vejle"},{"player_id":302358,"fullname":"Alan Goncalves Sousa","picture":"https://cdn.sportmonks.com/images/soccer/placeholder.png","position_num":4,"team_name":"Vejle"},{"player_id":34007907,"fullname":"Foday Manneh","picture":"https://cdn.sportmonks.com/images/soccer/players/3/34007907.png","position_num":4,"team_name":"Vejle"}],
+        
         all_teams: [
           {
             "team_id": 85,

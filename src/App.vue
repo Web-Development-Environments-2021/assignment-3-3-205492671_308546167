@@ -8,8 +8,8 @@
         <b-nav-item :to="{ name: 'Search Page' }">Search</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-if="!$root.store.state.user.username">
-          <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
-          <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
+          <b-nav-item :to="{ name: 'Login' }">Login</b-nav-item>
+          <b-nav-item :to="{ name: 'Register' }">Register</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-else>
           <b-nav-item href="#" v-if="isUni">LeagueMangement</b-nav-item>
@@ -83,7 +83,7 @@ export default {
     }
   },
   created(){
-    this.getAllPlayres();
+    // this.getAllPlayres();
     // this.getAllTeams();
   }
 };

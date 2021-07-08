@@ -14,6 +14,7 @@
           buttons
         ></b-form-radio-group>
       </b-form-group>
+      <b-button v-on:click="search">search</b-button>
     </b-input-group>
 
   <div class = "sort_container">
@@ -27,9 +28,12 @@
 
   </div>
   <div class="search_results">
+    <search-results :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
+  </div>
+  <!-- <div class="search_results">
     <search-results v-if="selectedMainSearch == 'team' && filterTeamBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
     <search-results v-if="selectedMainSearch == 'player' && filterPlayerBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
-  </div>
+  </div> -->
     <br/>
   </div>
 </template>
@@ -79,10 +83,16 @@ export default {
     },
     FilterResults(filterby, value){
       this.results = this.results.filter(e => e[filterby] == value)
-    }
-  },
-  computed: {
-    filterPlayerBySearch(){
+    },
+    search(){
+      if (this.selectedMainSearch == "player"){
+        this.filterPlayerBySearch();
+      }
+      else{
+        this.filterTeamBySearch();
+      }
+    },
+        filterPlayerBySearch(){
       if (this.searchQuery  == ""){
         return [];
       }
@@ -104,6 +114,8 @@ export default {
       this.saveResults(qulified_teams);
       return qulified_teams;
     }
+  },
+  computed: {
   }
     
 }

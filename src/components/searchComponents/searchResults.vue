@@ -1,7 +1,7 @@
 <template>
 <div>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <div v-if="selectedMainSearch == 'player' && emptyQuery">
+  <div v-if="results.length && results[0].fullname">
     <div class="content">
       <div class="container">
         <div class="row">
@@ -37,7 +37,7 @@
     </div>
   </div>
  
-    <div v-if="selectedMainSearch == 'team' && emptyQuery">
+    <div v-if="results.length && results[0].team_id">
       <div v-for="t in results" :key="t.team_id">
           <team-preview 
           :team_id="t.team_id"
@@ -47,7 +47,7 @@
           </team-preview>
       </div>
     </div>
-    <p v-if="!results.length">
+    <p v-if="!results.length && emptyQuery">
       im sorry but no search results fitted you query 
     </p>
 </div>

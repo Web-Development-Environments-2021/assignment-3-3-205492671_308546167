@@ -9,7 +9,7 @@
                                     <h4>{{fullname}}</h4>
                                     <p class="text-muted">{{team_name}} <span>| </span><span class="text-pink">{{getPos}}</span></p>
                                 </div>
-                                <button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"> Visit</button>
+                                <button type="button" v-on:click="goToPlayerPage" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"> Visit</button>
                
                             </div>
                         </div>

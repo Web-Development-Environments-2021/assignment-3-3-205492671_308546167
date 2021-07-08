@@ -11,6 +11,7 @@
       :court="g.court"
       :score="g.score"
       :key="g.id"></GamePreview>
+    <p v-if="!games.length"> no favorite matches are selected</p>
   </div>
 </template>
 
@@ -49,7 +50,8 @@ export default {
       this.$root.store.actions.setFavoriteMatches(this.games) 
     }
     if (this.num_matches){
-      this.games = this.games.splice(this.num_matches)
+      debugger
+      this.games = this.games.slice(0, this.num_matches)
     }
   }
 };

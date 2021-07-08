@@ -1,53 +1,55 @@
 <template>
     <div>
-       <b-table striped hover :items="pre_matches" :fields="fields">
-         <template #table-busy>
-        <div class="text-center text-danger my-2">
-          <b-spinner class="align-middle"></b-spinner>
-          <strong>Loading...</strong>
-        </div>
-      </template>
+      <h1> Up coming</h1>
+      <b-table striped hover :items="pre_matches" :fields="fields">
+        <template #cell(eventlog)="row">
+          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+            {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
+          </b-button>
+        </template>
 
-      <template #cell(eventlog)="row">
-        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
-          {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
-        </b-button>
-      </template>
+        <template #row-details="row">
+          <div class="eventlog">
+            <event v-for="e in row.item.eventlog" :event="e" :key="e.min_in_game"></event>
+          </div>
+        </template>
 
-      <template #row-details="row">
-        <div class="eventlog">
-          <event v-for="e in row.item.eventlog" :event="e" :key="e.min_in_game"></event>
-        </div>
-      </template>
-       </b-table>
+        
+        <template #cell(favorites)>
+          <heart name="favorite"></heart>
+        </template>
+      </b-table>
+
        <b-table striped hover :items="post_matches">
-         <template #table-busy>
-        <div class="text-center text-danger my-2">
-          <b-spinner class="align-middle"></b-spinner>
-          <strong>Loading...</strong>
-        </div>
-      </template>
 
-      <template #cell(eventlog)="row">
-        <b-button size="sm" @click="row.toggleDetails" class="mr-2">
-          {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
-        </b-button>
-      </template>
+        <template #cell(eventlog)="row">
+          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+            {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
+          </b-button>
+        </template>
 
-      <template #row-details="row">
-        <div class="eventlog">
-          <event v-for="e in row.item.eventlog" :event="e" :key="e.min_in_game"></event>
-        </div>
-      </template>
+        <template #cell(Favorites)="row">
+          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+            {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
+          </b-button>
+        </template>
+        
+
+        <template #row-details="row">
+          <div class="eventlog">
+            <event v-for="e in row.item.eventlog" :event="e" :key="e.min_in_game"></event>
+          </div>
+        </template>
        </b-table>
     </div>
 </template>
 
 <script>
 import event from '../components/event.vue'
+import Heart from '../components/heart.vue';
 export default {
-  components: { event },
-  name: "Current Fixture Page",
+  components: { event, Heart },
+  name: "CurrentFixturePage",
   data(){
     return{
       pre_matches: [],
@@ -98,7 +100,8 @@ export default {
             sortable: false,
             editable: true,
             required: false
-          }
+          },
+          {key: 'favorites'},
         ],
     }
   },

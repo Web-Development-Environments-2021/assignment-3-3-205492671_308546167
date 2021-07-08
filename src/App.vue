@@ -14,7 +14,7 @@
         </b-navbar-nav>
         <b-navbar-nav v-else>
           <b-nav-item :to="{ name: 'League Management Page' }" v-if="isUni">LeagueMangement</b-nav-item>
-          <b-nav-item href="#">Favorites</b-nav-item>
+          <b-nav-item :to="{ name: 'favorites' }">Favorites</b-nav-item>
           <b-nav-item href="#" v-on:click=Logout >Log Out</b-nav-item>
         </b-navbar-nav>
 

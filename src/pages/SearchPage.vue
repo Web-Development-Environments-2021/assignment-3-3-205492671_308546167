@@ -3,7 +3,8 @@
     <h1 class="title">Search Page</h1>
 
     <b-input-group prepend="Search Query:" class="search-input">
-      <b-form-input v-model="searchQuery"></b-form-input>
+      <vue-bootstrap-typeahead v-if="selectedMainSearch == 'player'" v-model="searchQuery" :data="$root.store.state.search.all_players" :serializer="s => s.fullname"/>
+      <vue-bootstrap-typeahead v-if="selectedMainSearch == 'team'" v-model="searchQuery" :data="$root.store.state.search.all_teams" :serializer="s => s.team_name"/>
       <b-form-group v-slot="{ ariaDescribedby }">
         <b-form-radio-group
           id="btn-radios-1"
@@ -98,7 +99,7 @@ export default {
       }
       let query = this.searchQuery;
       let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
-        return pl.fullname.toLowerCase().includes(query); 
+        return pl.fullname.toLowerCase().includes(query.toLowerCase()); 
       });
       this.saveResults(qulified_players);
       return qulified_players;
@@ -109,7 +110,7 @@ export default {
       }
       let query = this.searchQuery;
       let qulified_teams = this.$root.store.state.search.all_teams.filter(t => {
-        return t.team_name.toLowerCase().includes(query); 
+        return t.team_name.toLowerCase().includes(query.toLowerCase()); 
       });
       this.saveResults(qulified_teams);
       return qulified_teams;

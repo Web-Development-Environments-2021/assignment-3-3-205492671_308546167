@@ -1,10 +1,11 @@
 <template>
     <div>
     <b-form-group label="Postions" v-slot="{ ariaDescribedby }">
-      <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="1">GK</b-form-radio>  
-      <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="2">DEF</b-form-radio>
-      <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="3">MID</b-form-radio>
-      <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="4">ATT</b-form-radio>
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="1">GK</b-form-radio>  
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="2">DEF</b-form-radio>
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="3">MID</b-form-radio>
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="4">ATT</b-form-radio>
+      
     </b-form-group>
 
     <p>TEAM</p>
@@ -34,7 +35,8 @@ export default {
             if (this.selected){
                 this.$emit('filter-results', 'position_num', this.selected);
             }
-            return this.selected;
+            // return this.selected;
+            return true
 
         }
     }

@@ -3,7 +3,8 @@
     <h1 class="title">Search Page</h1>
 
     <b-input-group prepend="Search Query:" class="search-input">
-      <b-form-input v-model="searchQuery"></b-form-input>
+      <vue-bootstrap-typeahead v-if="selectedMainSearch == 'player'" v-model="searchQuery" :data="$root.store.state.search.all_players" :serializer="s => s.fullname"/>
+      <vue-bootstrap-typeahead v-if="selectedMainSearch == 'team'" v-model="searchQuery" :data="$root.store.state.search.all_teams" :serializer="s => s.team_name"/>
       <b-form-group v-slot="{ ariaDescribedby }">
         <b-form-radio-group
           id="btn-radios-1"
@@ -14,6 +15,7 @@
           buttons
         ></b-form-radio-group>
       </b-form-group>
+      <b-button v-on:click="search">search</b-button>
     </b-input-group>
 
   <div class = "sort_container">
@@ -27,9 +29,12 @@
 
   </div>
   <div class="search_results">
+    <search-results :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
+  </div>
+  <!-- <div class="search_results">
     <search-results v-if="selectedMainSearch == 'team' && filterTeamBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
     <search-results v-if="selectedMainSearch == 'player' && filterPlayerBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
-  </div>
+  </div> -->
     <br/>
   </div>
 </template>
@@ -79,16 +84,22 @@ export default {
     },
     FilterResults(filterby, value){
       this.results = this.results.filter(e => e[filterby] == value)
-    }
-  },
-  computed: {
-    filterPlayerBySearch(){
+    },
+    search(){
+      if (this.selectedMainSearch == "player"){
+        this.filterPlayerBySearch();
+      }
+      else{
+        this.filterTeamBySearch();
+      }
+    },
+        filterPlayerBySearch(){
       if (this.searchQuery  == ""){
         return [];
       }
       let query = this.searchQuery;
       let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
-        return pl.fullname.toLowerCase().includes(query); 
+        return pl.fullname.toLowerCase().includes(query.toLowerCase()); 
       });
       this.saveResults(qulified_players);
       return qulified_players;
@@ -99,11 +110,13 @@ export default {
       }
       let query = this.searchQuery;
       let qulified_teams = this.$root.store.state.search.all_teams.filter(t => {
-        return t.team_name.toLowerCase().includes(query); 
+        return t.team_name.toLowerCase().includes(query.toLowerCase()); 
       });
       this.saveResults(qulified_teams);
       return qulified_teams;
     }
+  },
+  computed: {
   }
     
 }

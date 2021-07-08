@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
 
 import routes from "./routes";
 import VueRouter from "vue-router";
@@ -87,11 +88,9 @@ axios.interceptors.response.use(
 );
 
 Vue.use(VueAxios, axios);
-
+Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead)
 Vue.config.productionTip = false;
 
-// console.log(shared_data);
-// Vue.prototype.$root.store = shared_data;
 
 new Vue({
   router,

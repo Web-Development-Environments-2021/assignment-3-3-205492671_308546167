@@ -1,9 +1,10 @@
 <template>
-  <div v-on:click="fullteampage">
-    <span>team name: {{team_name}}</span>
-    <span>
-        <img v-bind:src="team_logo">
-    </span>
+  <div>
+      <b-card v-on:click="fullteampage" class="cardcolor "  align="center" style="background-color: transparent;">
+                <b-img :src="this.team_logo"></b-img>
+                <br>
+                <b-badge variant="dark">{{team_name}}</b-badge>
+      </b-card>
   </div>
 </template>
 
@@ -33,5 +34,13 @@ export default {
 </script>
 
 <style>
+.cardcolor{
+    max-width: 15rem;
+    background-color: transparent;
+    border:0;
+     max-width: 200px; 
+     max-height:200px
+}
+
 
 </style>

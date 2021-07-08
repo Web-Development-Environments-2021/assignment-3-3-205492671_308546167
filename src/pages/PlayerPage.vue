@@ -3,7 +3,7 @@
        <div>
         <div>
             <br>
-            <b-card no-body class="overflow-hidden canana" style="max-width: 540px;" align="center">
+            <b-card no-body class="overflow-hidden card-colors" style="max-width: 540px;" align="center">
                 <b-row no-gutters>
                 <b-col md="3">
                     <b-img :src="this.players.picture" rounded="circle" alt="Circle image"></b-img>
@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style>
-.canana {
+.card-colors {
   color: #25302B;
   background-color: #E5E5EC;
   opacity: 0.85;

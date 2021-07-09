@@ -12,8 +12,7 @@ const state = {
         fresh: false
     },
     search: {
-        all_players: [{"player_id":465302,"fullname":"Arbnor Muçolli","picture":"https://cdn.sportmonks.com/images/soccer/placeholder.png","position_num":3,"team_name":"Vejle"},{"player_id":4192333,"fullname":"German Onugkha","picture":"https://cdn.sportmonks.com/images/soccer/placeholder.png","position_num":4,"team_name":"Vejle"},{"player_id":84022,"fullname":"Lucas Jensen","picture":"https://cdn.sportmonks.com/images/soccer/players/22/84022.png","position_num":3,"team_name":"Vejle"},{"player_id":37288979,"fullname":"Hugo Ekitike","picture":"https://cdn.sportmonks.com/images/soccer/players/19/37288979.png","position_num":4,"team_name":"Vejle"},{"player_id":9606061,"fullname":"Ivan Repyakh","picture":"https://cdn.sportmonks.com/images/soccer/players/13/9606061.png","position_num":3,"team_name":"Vejle"},{"player_id":302358,"fullname":"Alan Goncalves Sousa","picture":"https://cdn.sportmonks.com/images/soccer/placeholder.png","position_num":4,"team_name":"Vejle"},{"player_id":34007907,"fullname":"Foday Manneh","picture":"https://cdn.sportmonks.com/images/soccer/players/3/34007907.png","position_num":4,"team_name":"Vejle"}],
-        
+        all_players: [{"player_id":26722,"fullname":"Stephan Maigaard Andersen","picture":"https://cdn.sportmonks.com/images/soccer/players/2/26722.png","position_num":1,"team_name":"København"},{"player_id":84587,"fullname":"Sten Michael Grytebust","picture":"https://cdn.sportmonks.com/images/soccer/players/11/84587.png","position_num":1,"team_name":"København"},{"player_id":25057,"fullname":"Karl-Johan Johnsson","picture":"https://cdn.sportmonks.com/images/soccer/players/1/25057.png","position_num":1,"team_name":"København"},{"player_id":84494,"fullname":"Victor Nelsson","picture":"https://cdn.sportmonks.com/images/soccer/players/14/84494.png","position_num":2,"team_name":"København"}],
         all_teams: [
           {
             "team_id": 85,
@@ -96,36 +95,228 @@ const state = {
     },
     teams:
     {
-        "team_id": "939",
-        "team_players": [
-          {
-            "player_id": "5627",
-            "fullname": "Mikkel Andersen",
-            "team_name": "Midtjylland",
-            "picture": "https://cdn.sportmonks.com/images/soccer/players/27/5627.png",
-            "position_num": "1"
-          },
-          {
-            "player_id": "82808",
-            "fullname": "Jesper Hansen",
-            "team_name": "Midtjylland",
-            "picture": "https://cdn.sportmonks.com/images/soccer/players/24/82808.png",
-            "position_num": "1"
-          },
-          {
-            "player_id": "440450",
-            "fullname": "Paulo Victor da Silva",
-            "team_name": "Midtjylland",
-            "picture": "https://cdn.sportmonks.com/images/soccer/players/2/440450.png",
-            "position_num": "2"
-          },
-          {
-            "player_id": "61736",
-            "fullname": "Alexander Scholz",
-            "team_name": "Midtjylland",
-            "picture": "https://cdn.sportmonks.com/images/soccer/players/8/61736.png",
-            "position_num": "2"
-          }],
+             
+      "team_id": "939",
+      "team_players": [
+        {
+          "player_id": 82808,
+          "fullname": "Jesper Hansen",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/24/82808.png",
+          "position_num": 1,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 537110,
+          "fullname": "Oliver Ottesen",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/22/537110.png",
+          "position_num": 1,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 5627,
+          "fullname": "Mikkel Andersen",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/27/5627.png",
+          "position_num": 1,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 32408,
+          "fullname": "Jonas Lössl",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/24/32408.png",
+          "position_num": 1,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 62943,
+          "fullname": "Dion Cools",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/31/62943.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 83716,
+          "fullname": "Daniel Høegh",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/4/83716.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 191065,
+          "fullname": "Joel Andersson",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/25/191065.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 61736,
+          "fullname": "Alexander Scholz",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/8/61736.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 56300,
+          "fullname": "Ailton Ferreira Silva",
+          "picture": "https://cdn.sportmonks.com/images/soccer/placeholder.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 84980,
+          "fullname": "Kristian Dirks Riis",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/20/84980.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 5283381,
+          "fullname": "Oliver Olsen",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/21/5283381.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 83459,
+          "fullname": "Erik Sviatchenko",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/3/83459.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 440450,
+          "fullname": "Paulo Victor da Silva",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/2/440450.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 23698072,
+          "fullname": "Japhet Sery",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/24/23698072.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 84535,
+          "fullname": "Rasmus Nicolaisen",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/23/84535.png",
+          "position_num": 2,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 84011,
+          "fullname": "Pione Sisto Ifolo Emirmija",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/11/84011.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 223604,
+          "fullname": "Evander da Silva Ferreira",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/20/223604.png",
+          "position_num": 3,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 84619,
+          "fullname": "Awer Mabil",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/11/84619.png",
+          "position_num": 3,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 84570,
+          "fullname": "Mikael Anderson",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/26/84570.png",
+          "position_num": 3,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 84620,
+          "fullname": "Anders Dreyer",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/12/84620.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 537108,
+          "fullname": "Ogochukwu Onyeka Frank",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/20/537108.png",
+          "position_num": 3,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 194768,
+          "fullname": "Jens-Lys Michel Cajuste",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/16/194768.png",
+          "position_num": 3,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 190438,
+          "fullname": "Sory Kaba",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/6/190438.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 6216,
+          "fullname": "Lasse Vibe",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/8/6216.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 47518,
+          "fullname": "Luca Pfeiffer",
+          "picture": "https://cdn.sportmonks.com/images/soccer/placeholder.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 1548396,
+          "fullname": "José Francisco dos Santos Júnior",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/12/1548396.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        },
+        {
+          "player_id": 142478,
+          "fullname": "Chuma Anene",
+          "picture": "https://cdn.sportmonks.com/images/soccer/players/14/142478.png",
+          "position_num": 4,
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+        }
+      ],
+
+    
           "post_played_matches": [
             {
               "match_id": "1",
@@ -162,7 +353,9 @@ const state = {
               "eventlog": [],
               "score": ""
             }
-          ]
+          ],
+          "team_name": "Midtjylland",
+          "team_logo": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
     }
 }
 const actions = {

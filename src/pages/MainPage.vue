@@ -1,9 +1,20 @@
 <template>
   <div class="container">
-    <h1 class="title">Main Page</h1>
-    <LoginPage v-if="!$root.store.state.user.username"></LoginPage>
-    <FavoriteGames :num_matches="3" v-else ></FavoriteGames>
-    <LeagueInfo></LeagueInfo>
+    <!-- <h1 class="title">Main Page</h1> -->
+    <br>
+    <b-container>
+      <b-row>
+        <b-col cols="6">
+          <LeagueInfo></LeagueInfo>
+        </b-col>
+        <b-col cols="6">
+          <LoginPage v-if="!$root.store.state.user.username"></LoginPage>
+          <FavoriteGames :num_matches="3" v-else ></FavoriteGames>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    
   </div>
 </template>
 

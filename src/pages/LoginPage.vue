@@ -3,6 +3,7 @@
     <h1 class="title">Login</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group
+        class="bold"
         id="input-group-Username"
         label-cols-sm="3"
         label="Username:"
@@ -26,6 +27,7 @@
       </b-form-group>
 
       <b-form-group
+        class="bold"
         id="input-group-Password"
         label-cols-sm="3"
         label="Password:"
@@ -50,14 +52,14 @@
 
       <b-button
         type="submit"
-        variant="primary"
+        variant="success"
         style="width:100px;display:block;"
-        class="mx-auto w-100"
+        class="mx-auto w-100 login-button"
         >Login</b-button
       >
       <div class="mt-2">
         Do not have an account yet?
-        <router-link to="register"> Register in here</router-link>
+        <router-link to="register" class="register-text"> Register in here</router-link>
       </div>
     </b-form>
     <b-alert
@@ -69,6 +71,7 @@
     >
       Login failed: {{ form.submitError }}
     </b-alert>
+<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3mJpUDBH8EmAlx6pnz" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
     <!-- <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
     </b-card> -->
@@ -145,5 +148,26 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 400px;
+  color: #25302B;
+  background-color: #E5E5EC;
+  opacity: 0.85;
 }
+
+.login-button{
+  background-color: #25302B;
+  border-color: #4A503D;
+  
+}
+.login-button:hover{
+  background-color: #8E9775;
+}
+
+.title{
+  color:#25302B;
+  text-align: center;
+}
+.register-text{
+  color:#7DA87B;
+}
+
 </style>

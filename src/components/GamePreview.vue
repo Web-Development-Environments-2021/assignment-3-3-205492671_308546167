@@ -62,7 +62,7 @@ export default {
       ,
       score: {
         type: String,
-        required: true
+        required: false
       }
   },
   computed: {

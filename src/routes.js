@@ -53,6 +53,11 @@ const routes = [
         component: () => import("./pages/LeagueManagementPage") 
     },
     {
+        path: "/favorites",
+        name: "favorites",
+        component: () => import("./pages/Favorites") 
+    },
+    {
         path: "*",
         name: "Not Found Page",
         component: () => import("./pages/NotFoundPage") 

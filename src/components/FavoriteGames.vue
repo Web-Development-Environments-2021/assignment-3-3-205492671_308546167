@@ -11,6 +11,7 @@
       :court="g.court"
       :score="g.score"
       :key="g.id"></GamePreview>
+    <p v-if="!games.length"> no favorite matches are selected</p>
   </div>
 </template>
 
@@ -20,6 +21,9 @@ export default {
   name: "FavoriteGames",
   components: {
     GamePreview
+  },
+  props: {
+    num_matches: {type: Number, required: false}
   }, 
   data() {
     return {
@@ -44,6 +48,10 @@ export default {
     if (!this.$root.store.state.favorite_matches.fresh){
       await this.updateGames();
       this.$root.store.actions.setFavoriteMatches(this.games) 
+    }
+    if (this.num_matches){
+      debugger
+      this.games = this.games.slice(0, this.num_matches)
     }
   }
 };

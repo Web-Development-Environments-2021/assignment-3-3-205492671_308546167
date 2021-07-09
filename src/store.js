@@ -180,6 +180,9 @@ const actions = {
         state.favorite_matches.matches = favorite_matches;
         state.favorite_matches.fresh = !freshness;
     },
+    setFavoriteMatchFreshness(){
+      state.favorite_matches.fresh = !state.favorite_matches.fresh;
+    },
     setSeasonMatches(season_matches) {
         state.season_matches.matches = season_matches;
         state.favorite_matches.fresh = true;

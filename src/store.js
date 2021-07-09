@@ -196,7 +196,11 @@ const actions = {
     addEvent(e){
       let match = state.season_matches.matches.find(m => m.match_id == e.match_id);
       match.eventlog.push(e.event);
-  }
+    },
+    addSCore(s){
+      let match = state.season_matches.matches.find(m => m.match_id == s.match_id);
+      match.score = s.score;
+    }
 }
 export { state, actions };  
   

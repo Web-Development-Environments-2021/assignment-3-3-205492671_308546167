@@ -20,11 +20,8 @@
         </b-button>
       </template>
 
-      <template #cell(score)>
-        <span class="score-input">
-        <b-form-input v-model="score" placeholder="add score"></b-form-input>
-        <b-button type="submit">save</b-button>
-        </span>
+      <template #cell(score)="data">
+        <score-update :match_id="data.item.match_id" :oldScore="data.item.score" v-on:add-score="addScore"></score-update>
       </template>
 
       <template #row-details="row">
@@ -53,8 +50,9 @@ import CreateMatch from '../components/LeagueMangementButtons/createMatch.vue'
 import event from '../components/event.vue'
 import AddReferee from '../components/LeagueMangementButtons/addReferee.vue'
 import AddEvent from '../components/LeagueMangementButtons/addEvent.vue'
+import ScoreUpdate from '../components/LeagueMangementButtons/scoreUpdate.vue'
 export default {
-  components: { event, CreateMatch, AddReferee, AddEvent },
+  components: { event, CreateMatch, AddReferee, AddEvent, ScoreUpdate },
   name: "leagueMangment",
   data(){
     return{
@@ -160,6 +158,21 @@ export default {
       }
     },
 
+    async addScore(update_score){
+      try {
+        debugger;
+        const response = await this.axios.put(
+          "http://localhost:4000/user/union_representative/add_score", update_score,
+          {withCredentials: true}
+        );
+        this.$root.toast("add score", "score was added successfully", "success");
+        this.$root.store.actions.addScore(update_score);
+      } catch (error) {
+        this.$root.toast("add score", error.response.data, "danger");
+      }
+    },
+
+
     async addReferee(referee_name){
       try {
         const response = await this.axios.put(
@@ -207,9 +220,6 @@ export default {
 
 .c-match-button {
   float: right;
-}
-.score-input{
-  display: flex;
 }
 
 .r-add-button {

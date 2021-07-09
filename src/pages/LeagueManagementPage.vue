@@ -3,7 +3,6 @@
       <h2> League Management Page </h2>
       <b-row>
         <b-col md="10">
-          <!-- <b-form-input v-model="filter" type="search" placeholder="search"></b-form-input> -->
         </b-col>
       </b-row>
 
@@ -23,6 +22,7 @@
 
       <template #row-details="row">
         <div class="eventlog">
+          <add-event :match="row.item" v-on:add-event="addEvent"></add-event>
           <event v-for="e in row.item.eventlog" :event="e" :key="e.min_in_game"></event>
         </div>
       </template>
@@ -45,8 +45,9 @@
 import CreateMatch from '../components/LeagueMangementButtons/createMatch.vue'
 import event from '../components/event.vue'
 import AddReferee from '../components/LeagueMangementButtons/addReferee.vue'
+import AddEvent from '../components/LeagueMangementButtons/addEvent.vue'
 export default {
-  components: { event, CreateMatch, AddReferee },
+  components: { event, CreateMatch, AddReferee, AddEvent },
   name: "leagueMangment",
   data(){
     return{
@@ -136,6 +137,19 @@ export default {
         this.getSeasonMatches();
       } catch (error) {
         this.$root.toast("create match", error.response.data, "danger");
+      }
+    },
+
+    async addEvent(event){
+      try {
+        const response = await this.axios.put(
+          "http://localhost:4000/user/union_representative/add_event", event,
+          {withCredentials: true}
+        );
+        this.$root.toast("add event", "event was added successfully", "success");
+        this.$root.store.actions.addEvent(event);
+      } catch (error) {
+        this.$root.toast("add event", error.response.data, "danger");
       }
     },
 

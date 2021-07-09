@@ -1,5 +1,5 @@
 <template>
-  <b-card >
+  <b-card class="event" >
     <b-row class="mb-2">
         <b-col sm="3" class="text-sm-right"><b>Minute:</b></b-col>
         <b-col>{{ event.min_in_game }}</b-col>
@@ -30,5 +30,7 @@ export default {
 </script>
 
 <style>
-
+.event{
+    background-color: transparent;
+}
 </style>

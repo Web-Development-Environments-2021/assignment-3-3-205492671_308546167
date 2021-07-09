@@ -192,7 +192,11 @@ const actions = {
     },
     setTeams(teams){
         state.search.all_teams = teams;
-    }
+    },
+    addEvent(e){
+      let match = state.season_matches.matches.find(m => m.match_id == e.match_id);
+      match.eventlog.push(e.event);
+  }
 }
 export { state, actions };  
   

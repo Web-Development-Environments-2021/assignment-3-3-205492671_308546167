@@ -7,8 +7,7 @@
                     class="favorite__checkbox"
                     type="checkbox"
                     v-bind:name="name"
-                    v-bind:value="value"
-                    v-model="value"
+
                     v-on:click="addFavorite">
                     
             ❤
@@ -20,18 +19,28 @@
 export default {
     data(){
         return{
-            value: false
         }
     },
     props: {
         'name': {
             type: String,
             default: 'favorite'
+        },
+        value: {
+            type: Boolean,
+            required: true
+        },
+        index: {
+            type: Number,
+            required: true
         }
     },
     methods: {
         addFavorite() {
-            this.value = !this.value;
+            if (!this.value){
+                this.value = true;
+                this.$emit("add-favorite", this.index);
+            }
         }
     }
 }

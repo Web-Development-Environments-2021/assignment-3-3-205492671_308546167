@@ -15,8 +15,9 @@
         </template>
 
         
-        <template #cell(favorites)>
-          <heart name="favorite"></heart>
+        <template #cell(favorites)="data">
+          <heart name="favorite" :index="data.item.match_id" v-on:add-favorite="addFavorite"
+          :value= "$root.store.state.favorite_matches.matches.filter(e => e.match_id == data.item.match_id).length>0"></heart>
         </template>
       </b-table>
 
@@ -116,9 +117,19 @@ export default {
         console.log("something went wrong");
         this.$route.push("*");
       }
+    },
+    async addFavorite(match_id){
+      try{
+        const response = await this.axios.put("http://localhost:4000/user/favorites/matches",
+        {match_id: match_id}, {withCredentials: true});
+        this.$root.toast("add favorite", "match was added successfully", "success");
+        this.$root.store.actions.setFavoriteMatchFreshness()
+      } catch (error) {
+        this.$root.toast("add favorite", error.response.data, "danger");
+      }   
     }
   },
-  mounted() {
+  created() {
     this.get_current_fixture();
   }
 

@@ -5,8 +5,8 @@
         </span>
         <span v-if="show" class="score-input">
             <b-form-input v-model="newScore" :placeholder="oldScore"></b-form-input>
-            <b-button v-on:click="onSave" type="submit">save</b-button>
-            <b-button v-on:click="show=false" type="submit">cancel</b-button>
+            <b-button pill variant="info" v-on:click="onSave" type="submit">save</b-button>
+            <b-button pill variant="outline-dark" v-on:click="show=false" type="submit">cancel</b-button>
         </span>
     </div>
 </template>

@@ -20,6 +20,13 @@
         </b-button>
       </template>
 
+      <template #cell(score)>
+        <span class="score-input">
+        <b-form-input v-model="score" placeholder="add score"></b-form-input>
+        <b-button type="submit">save</b-button>
+        </span>
+      </template>
+
       <template #row-details="row">
         <div class="eventlog">
           <add-event :match="row.item" v-on:add-event="addEvent"></add-event>
@@ -200,6 +207,9 @@ export default {
 
 .c-match-button {
   float: right;
+}
+.score-input{
+  display: flex;
 }
 
 .r-add-button {

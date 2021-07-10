@@ -1,7 +1,17 @@
 <template>
     <div>
       <h1> Up coming</h1>
-      <b-table striped hover :items="pre_matches" :fields="fields">
+      <b-table striped hover :items="pre_matches" :fields="fields" :busy="isBusy">
+
+      <template #table-busy>
+        <div class="text-center text-danger my-2">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong>Loading...</strong>
+        </div>
+      </template>
+
+
+
         <template #cell(eventlog)="row">
           <b-button size="sm" @click="row.toggleDetails" class="mr-2">
             {{ row.detailsShowing ? 'Hide' : 'Show'}} Events
@@ -20,8 +30,15 @@
           :value= "$root.store.state.favorite_matches.matches.filter(e => e.match_id == data.item.match_id).length>0"></heart>
         </template>
       </b-table>
+      <h1>Already Played</h1>
+      <b-table striped hover :items="post_matches" :fields="fields" :busy="isBusy">
 
-       <b-table striped hover :items="post_matches">
+        <template #table-busy>
+          <div class="text-center text-danger my-2">
+            <b-spinner class="align-middle"></b-spinner>
+            <strong>Loading...</strong>
+          </div>
+        </template>
 
         <template #cell(eventlog)="row">
           <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -128,6 +145,16 @@ export default {
         this.$root.toast("add favorite", error.response.data, "danger");
       }   
     }
+  },
+  computed: {
+    isBusy() {
+        if (!this.pre_matches.length){
+          console.log("im busy")
+          return true;
+        }
+        console.log("im cool")
+        return false;
+      }
   },
   created() {
     this.get_current_fixture();

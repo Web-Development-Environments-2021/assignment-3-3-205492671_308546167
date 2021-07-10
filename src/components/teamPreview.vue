@@ -13,7 +13,6 @@ export default {
     name: "team-preview",
     props: {
         team_id: {
-            type: String,
             required: true
         },
         team_name: {

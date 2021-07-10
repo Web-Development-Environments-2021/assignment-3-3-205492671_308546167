@@ -57,7 +57,7 @@ export default {
       this.getLeagueInfo();
     }
     else{
-      this.league_summary = this.$root.state.league_info.league_summary
+      this.league_summary = this.$root.store.state.league_info.league_summary
     }
   }
 };

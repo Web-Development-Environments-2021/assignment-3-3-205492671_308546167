@@ -145,7 +145,9 @@ export default {
 }
 
 .team-prev{
- left:6%;
+  left:12%;
+  box-shadow: none;
+
 }
 
 .players-carousel{

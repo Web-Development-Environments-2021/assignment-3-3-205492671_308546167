@@ -10,6 +10,7 @@
         <br/>
         <br/>
       </b-card-text>
+
       <b-card-body class="carousel">
         <b-carousel 
 
@@ -22,7 +23,7 @@
 
           <b-carousel-slide 
             img-blank img-alt="Blank image"
-            v-for="t in teams" :key="t.team_id"
+            v-for="t in $root.store.state.search.all_teams" :key="t.team_id"
           >
             <teamPreview class="teamPrev"
               :team_id="t.team_id"
@@ -31,17 +32,18 @@
             </teamPreview>
           </b-carousel-slide>
         </b-carousel>
-      <div class="next-match">
-      <game-preview v-if="match"
-      :id="match.match_id" 
-      :home_team="match.home_team" 
-      :away_team="match.away_team" 
-      :home_team_logo="match.home_team_logo" 
-      :away_team_logo="match.away_team_logo" 
-      :date="match.date" 
-      :court="match.court"
-      :score="match.score"
-      ></game-preview>
+
+        <div class="next-match">
+        <game-preview v-if="match"
+        :id="match.match_id" 
+        :home_team="match.home_team" 
+        :away_team="match.away_team" 
+        :home_team_logo="match.home_team_logo" 
+        :away_team_logo="match.away_team_logo" 
+        :date="match.date" 
+        :court="match.court"
+        :score="match.score"
+        ></game-preview>
       </div>
         </b-card-body>
     </b-card>

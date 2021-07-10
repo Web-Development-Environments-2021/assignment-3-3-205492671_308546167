@@ -111,9 +111,6 @@ export default {
   },
   methods: {
     async getSeasonMatches(){
-      if (this.$root.store.state.season_matches.fresh){
-        return
-      }
       console.log("getting Season Matches")
       try {
         const response = await this.axios.get(
@@ -213,7 +210,12 @@ export default {
     if (!this.$root.store.actions.hasPremission("union_rep")){
         this.$router.push("*");
     }
-    this.getSeasonMatches();
+    if (!this.$root.store.state.season_matches.fresh){
+      this.getSeasonMatches();
+    }
+    else{
+      this.season_matches = this.$root.store.state.season_matches.matches
+    }
 
   }
 

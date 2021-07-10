@@ -31,9 +31,18 @@ export default {
            if (!this.newScore){
                return
            } 
+           if(!this.containsAlpha()){
+               this.$root.toast("Invalid Input", "Score format is 1-1", "danger");
+               return
+           }
            this.$emit("add-score", {match_id: this.match_id, score: this.newScore});
            this.show = false
            this.oldScore = this.newScore
+        },
+        containsAlpha(){
+            if(this.newScore.match(/[a-z]/i) || this.newScore.match(/[#?!@$%^&*]/i))
+                return false;
+            return true;
         }
     },
     computed:{

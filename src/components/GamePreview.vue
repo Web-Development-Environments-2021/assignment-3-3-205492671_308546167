@@ -1,5 +1,6 @@
 <template>
   <div>
+        <br>
         <div class="grid">
             <div id="team-name">
                 <span>{{ home_team }}</span>
@@ -86,16 +87,14 @@ export default {
 .grid {
   border-style: solid;
   border-color: white;
-  width:33%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* font-family: "Copperplate", fantasy;
-   */
-   font-family: "Arial", San-serif;
+  font-family: "Arial", San-serif;
 }
 
 .grid > div {
-background-color: #374d51;
+/* background-color: #374d51; */
+background-color: #2c3e50;
 color: white;
 font-size: medium;
 padding: 10px;
@@ -117,7 +116,6 @@ text-align: center;
 .logo {
     height: 60%;
     width:60%;
-    /* border-radius: 50%; */
 }
 
 

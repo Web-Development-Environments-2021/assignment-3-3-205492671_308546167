@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar style="background-color:#2c3e50" toggleable="lg" type="dark" >
       <b-navbar-brand :to="{ name: 'MainPage' }">Superliga Vue</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
@@ -129,4 +129,6 @@ export default {
 #nav a.router-link-exact-active {
   color: #00e980;
 }
+
+
 </style>

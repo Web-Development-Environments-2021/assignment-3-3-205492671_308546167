@@ -91,7 +91,7 @@ export default {
   },
   created(){
     // this.getAllPlayres();
-    // this.getAllTeams();
+    this.getAllTeams();
   }
 };
 </script>

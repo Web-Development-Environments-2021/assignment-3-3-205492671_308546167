@@ -46,8 +46,9 @@
                             We would like to share with you our projects:
                             <ul>
                               <li><a href="https://web-development-environments-2021.github.io/Assignment2_205492671_308546167/#">Pacman Game</a></li>
-                              <li><a href="https://web-development-environments-2021.github.io/205492671/">Naor's grandmother website</a></li>
                               <li><a href="https://web-development-environments-2021.github.io/308546167/">Liad's role model website</a></li>
+                              <li><a href="https://web-development-environments-2021.github.io/205492671/">Naor's grandmother website</a></li>
+
                             </ul>        
                           </div>
                         </b-container>

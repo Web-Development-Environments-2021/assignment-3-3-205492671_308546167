@@ -43,7 +43,6 @@ export default {
   name: "App",
   methods: {
     async Logout() {
-      debugger;
       try {
         const response = await this.axios.put(
           "http://localhost:4000/user/logout", {}, {withCredentials: true}

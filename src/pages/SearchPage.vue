@@ -174,16 +174,13 @@ export default {
 
 
 .sort_bar{
-  /* border: solid 2px purple; */
   width: max-content;
   margin-left: 50px;
 } 
 
 
 .sort_container{
-  /* border: solid 2px red; */
   display: flex;
-  /* justify-content: space-evenly;  */
   width: max-content;
 }
 

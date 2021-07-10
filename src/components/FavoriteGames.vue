@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div v-if="busy" class="text-center my-2">
+      <b-spinner class="align-middle"></b-spinner>
+      <strong>Loading...</strong>
+    </div>
+    <div v-else>
     <GamePreview
       v-for="g in games"
       :id="g.match_id" 
@@ -11,7 +16,9 @@
       :court="g.court"
       :score="g.score"
       :key="g.id"></GamePreview>
+
     <p v-if="!games.length"> no favorite matches are selected</p>
+    </div>
   </div>
 </template>
 
@@ -28,6 +35,7 @@ export default {
   data() {
     return {
       games: this.$root.store.state.favorite_matches.matches,
+      busy: true
     };
   },
   methods: {
@@ -50,9 +58,9 @@ export default {
       this.$root.store.actions.setFavoriteMatches(this.games) 
     }
     if (this.num_matches){
-      debugger
       this.games = this.games.slice(0, this.num_matches)
     }
+    this.busy = false
   }
 };
 </script>

@@ -90,8 +90,8 @@ export default {
     }
   },
   created(){
-    // this.getAllPlayres();
-    // this.getAllTeams();
+    this.getAllPlayres();
+    this.getAllTeams();
   }
 };
 </script>

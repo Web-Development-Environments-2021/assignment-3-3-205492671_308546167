@@ -7,7 +7,8 @@
                 <br>
                 <span><img class="logo" v-bind:src="home_team_logo"></span></div>
             <div id="middle-col">
-              <span id="score">1:0</span><br><br>
+              <span v-if="score" id="score">{{score}}</span>
+              <span v-else id="score">VS</span><br><br>
               <span>{{ court }}</span><br>
               <span>{{ getDate }}</span><br>
               <span>{{ getTime }}</span>
@@ -31,7 +32,6 @@ export default {
   name: "GamePreview",
   props: {
       id: {
-        type: Number,
         required: true
       },
       home_team: {

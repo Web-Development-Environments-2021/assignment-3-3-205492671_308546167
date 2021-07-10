@@ -55,7 +55,6 @@
 </template>
 
 <script>
-import PlayerPreview from '../PlayerPreview.vue';
 import PlayerPreviewNG from '../PlayerPreviewNG.vue';
 import TeamPreview from '../teamPreview.vue';
 export default {

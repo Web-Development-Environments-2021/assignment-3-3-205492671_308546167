@@ -18,7 +18,70 @@ const state = {
     },
     search: {
         all_players: [],
-        all_teams: []
+        all_teams: 
+          [
+            {
+              "team_id": 85,
+              "team_name": "København",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/21/85.png"
+            },
+            {
+              "team_id": 86,
+              "team_name": "Silkeborg",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/22/86.png"
+            },
+            {
+              "team_id": 293,
+              "team_name": "Brøndby",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/5/293.png"
+            },
+            {
+              "team_id": 390,
+              "team_name": "SønderjyskE",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/6/390.png"
+            },
+            {
+              "team_id": 939,
+              "team_name": "Midtjylland",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/11/939.png"
+            },
+            {
+              "team_id": 1020,
+              "team_name": "AaB",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/28/1020.png"
+            },
+            {
+              "team_id": 1789,
+              "team_name": "OB",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/29/1789.png"
+            },
+            {
+              "team_id": 2356,
+              "team_name": "Randers",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/20/2356.png"
+            },
+            {
+              "team_id": 2394,
+              "team_name": "Nordsjælland",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/26/2394.png"
+            },
+            {
+              "team_id": 2447,
+              "team_name": "Viborg",
+              "image": "https://cdn.sportmonks.com/images/soccer/team_placeholder.png"
+            },
+            {
+              "team_id": 2905,
+              "team_name": "AGF",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/25/2905.png"
+            },
+            {
+              "team_id": 7466,
+              "team_name": "Vejle",
+              "image": "https://cdn.sportmonks.com/images//soccer/teams/10/7466.png"
+            }
+          ]
+        
     }, 
 }
 const actions = {

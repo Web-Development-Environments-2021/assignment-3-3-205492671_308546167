@@ -71,7 +71,8 @@
     >
       Login failed: {{ form.submitError }}
     </b-alert>
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3mJpUDBH8EmAlx6pnz" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+    <!-- <b-img src="https://res.cloudinary.com/dswkzsdoq/image/upload/v1625939990/goal_gojdr9.png"></b-img> -->
+<!-- <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3mJpUDBH8EmAlx6pnz" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div> -->
     <!-- <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
     </b-card> -->
@@ -151,6 +152,7 @@ export default {
   color: #25302B;
   background-color: #E5E5EC;
   opacity: 0.85;
+  margin-top: 5%;
 }
 
 .login-button{

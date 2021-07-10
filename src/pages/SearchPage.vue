@@ -1,6 +1,45 @@
 <template>
   <div class="main">
     <h1 class="title">Search Page</h1>
+    <b-card class="search-card">
+      <b-form>
+        <b-form-group v-slot="{ ariaDescribedby }" >
+          <label class="welcome">Hey Liad, What are you looking for?</label>
+          <b-form-radio-group class="pt-2" id="radio-group-2">
+            <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="A">Player</b-form-radio>
+            <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="B">Team</b-form-radio>
+          </b-form-radio-group>
+          <span>
+            <b-row>
+              <b-col cols="9"><b-form-input placeholder="Enter your query..."></b-form-input></b-col>
+              <b-col cols="3"><b-button>Search <b-icon-search></b-icon-search></b-button> </b-col>
+            </b-row>
+          </span>
+      </b-form-group>
+
+      </b-form>
+      
+    </b-card>
+    
+    <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <b-input-group prepend="Search Query:" class="search-input">
       <vue-bootstrap-typeahead v-if="selectedMainSearch == 'player'" v-model="searchQuery" :data="$root.store.state.search.all_players" :serializer="s => s.fullname"/>
@@ -123,7 +162,17 @@ export default {
 </script>
 
 <style scoped>
+.search-card{
+  background-color: #E5E5EC;
+  opacity: 0.85;
+  width: 50%;
+  left: 22.5%;
+}
 
+.welcome{
+  background-color:#52565e; 
+  color:white;
+}
 .search-input {
   margin-left: 250px; 
   margin-bottom: 20px;

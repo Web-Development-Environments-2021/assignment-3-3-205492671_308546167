@@ -393,7 +393,11 @@ const actions = {
     addSCore(s){
       let match = state.season_matches.matches.find(m => m.match_id == s.match_id);
       match.score = s.score;
+    },
+    hasPremission(role){
+      return state.user.roles.includes(role);
     }
+
 }
 export { state, actions };  
   

@@ -37,6 +37,10 @@ export default {
     },
     methods: {
         addFavorite() {
+            if (!this.$root.store.state.user.username){
+                this.$root.toast("add favorites", "please log in beforehand", "danger");
+                return
+            }
             if (!this.value){
                 this.value = true;
                 this.$emit("add-favorite", this.index);

@@ -210,7 +210,11 @@ export default {
       }
   },
   created(){
+    if (!this.$root.store.actions.hasPremission("union_rep")){
+        this.$router.push("*");
+    }
     this.getSeasonMatches();
+
   }
 
 }

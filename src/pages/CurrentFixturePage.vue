@@ -11,6 +11,14 @@
       </template>
 
 
+        <template #cell(home_team)="data">
+          <button type="button" v-on:click="toTeamPage(data.item.home_team)">{{data.item.home_team}}</button>
+        </template>
+
+        <template #cell(away_team)="data">
+          <button type="button" v-on:click="toTeamPage(data.item.away_team)">{{data.item.away_team}}</button>
+        </template>
+
 
         <template #cell(eventlog)="row">
           <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -38,6 +46,15 @@
             <b-spinner class="align-middle"></b-spinner>
             <strong>Loading...</strong>
           </div>
+        </template>
+
+
+        <template #cell(home_team)="data">
+          <button type="button" v-on:click="toTeamPage(data.item.home_team)">{{data.item.home_team}}</button>
+        </template>
+
+        <template #cell(away_team)="data">
+          <button type="button" v-on:click="toTeamPage(data.item.away_team)">{{data.item.away_team}}</button>
         </template>
 
         <template #cell(eventlog)="row">
@@ -145,6 +162,10 @@ export default {
       } catch (error) {
         this.$root.toast("add favorite", error.response.data, "danger");
       }   
+    },
+    toTeamPage(name){
+      let team_id = this.$root.store.state.search.all_teams.filter(t=> t.team_name == name)[0].team_id
+      this.$router.push({ name: "team-Page", params: {id: team_id} }).catch(()=>{});
     }
   },
   computed: {

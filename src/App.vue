@@ -22,7 +22,13 @@
           <b-avatar class="mr-3" variant="info" src="https://placekitten.com/300/300">
                 <template v-if="isUni" #badge><b-icon icon="star-fill"></b-icon></template>
           </b-avatar>
-           <span class="user-name mr-auto">liad oz</span>
+           <span class="user-name mr-auto">{{$root.store.state.user.username}}</span>
+        </b-navbar-nav>
+        <b-navbar-nav v-else class="ml-auto d-flex align-items-center">
+          <b-avatar class="mr-3" variant="info" src="src\assets\guest-icon-png-6.jpg">
+                <template v-if="isUni" #badge><b-icon icon="star-fill"></b-icon></template>
+          </b-avatar>
+           <span class="user-name mr-auto">hello guest</span>
         </b-navbar-nav>
 
       </b-collapse>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button @click="show=true" variant="primary">Create Match</b-button>
+    <b-button @click="show=true" variant="dark">Create Match</b-button>
 
     <b-modal
       v-model="show"
@@ -51,13 +51,6 @@
       <template #modal-footer>
         <div class="w-100">
           <p class="float-left"></p>
-            <b-button
-            variant="primary"
-            size="sm"
-            class="float-right"
-            @click="onSave">
-            Save
-          </b-button>
           <b-button
             variant="primary"
             size="sm"
@@ -66,6 +59,14 @@
           >
             Close
           </b-button>
+            <b-button
+            variant="primary"
+            size="sm"
+            class="float-right"
+            @click="onSave">
+            Save
+          </b-button>
+
         </div>
       </template>
     </b-modal>
@@ -123,5 +124,7 @@
 </script>
 
 <style scoped>
-
+  .float-right{
+    margin-right:5px;
+  }
 </style>

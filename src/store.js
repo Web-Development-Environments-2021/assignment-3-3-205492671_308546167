@@ -1,4 +1,8 @@
 const state = {
+    league_info: {
+      league_summary: {},
+      fresh: false
+    },  
     user: {
         username: "",
         roles: []
@@ -396,6 +400,10 @@ const actions = {
     },
     hasPremission(role){
       return state.user.roles.includes(role);
+    },
+    setLeagueInfo(summary){
+      state.league_info.league_summary = summary
+      state.league_info.fresh = !state.league_info.fresh
     }
 
 }

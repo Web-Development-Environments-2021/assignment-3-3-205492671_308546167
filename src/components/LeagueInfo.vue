@@ -2,7 +2,6 @@
     <div class="league-preview">
       <b-card class="leauge-info-card">
       <b-card-img src="https://res.cloudinary.com/dswkzsdoq/image/upload/v1625860678/1200px-Superliga_2010.svg_hvaenv.png"></b-card-img>
-      <!-- <b-card-title>{{leagueName}}</b-card-title> -->
       <b-card-text>
         <br/>
         <span class="bold">Season:</span> {{ season }}
@@ -32,6 +31,18 @@
             </teamPreview>
           </b-carousel-slide>
         </b-carousel>
+      <div class="next-match">
+      <game-preview
+      :id="match.match_id" 
+      :home_team="match.home_team" 
+      :away_team="match.away_team" 
+      :home_team_logo="match.home_team_logo" 
+      :away_team_logo="match.away_team_logo" 
+      :date="match.date" 
+      :court="match.court"
+      :score="match.score"
+      ></game-preview>
+      </div>
         </b-card-body>
     </b-card>
  
@@ -41,13 +52,17 @@
 
 <script>
   import teamPreview from '../components/teamPreview.vue';
+import GamePreview from './GamePreview.vue';
 export default {
-  components: {teamPreview },
+  components: {teamPreview, GamePreview },
+  props:{
+    leagueName: {type: String}, 
+      season: {type: String}, 
+      stage: {type: String},
+      match: {type: Object}
+  },
  data() {
     return {
-      leagueName: "Superliga", 
-      season: "2020-2021", 
-      stage: "Champions",
       teams: ""
     };
   },
@@ -79,7 +94,9 @@ export default {
 }
 .bold{
   font-weight: bold;
-
+}
+.next-match{
+  background-color: red;
 }
 .leauge-info-card{
    background-color: #E5E5EC;

@@ -5,7 +5,12 @@
     <b-container>
       <b-row>
         <b-col cols="6">
-          <LeagueInfo></LeagueInfo>
+          <LeagueInfo
+            :leagueName="league_summary.league_name"
+            :season="league_summary.season_name"
+            :stage="league_summary.stage_name"
+            :match="league_summary.match"
+          ></LeagueInfo>
         </b-col>
         <b-col cols="6">
           <LoginPage v-if="!$root.store.state.user.username"></LoginPage>
@@ -27,6 +32,33 @@ export default {
     LeagueInfo, 
     LoginPage, 
     FavoriteGames
+  },
+  data(){
+    return{
+      league_summary: {}
+    }
+  },
+  methods:{
+    async getLeagueInfo(){
+      console.log("getting league info")
+      try {
+        const response = await this.axios.get(
+          "http://localhost:4000/league/summary"
+        );
+        this.$root.store.actions.setLeagueInfo(response.data);
+        this.league_summary = response.data
+      } catch (error) {
+        console.log("error in league summary");
+      }  
+    }
+  },
+  created(){
+    if (!this.$root.store.state.league_info.fresh){ 
+      this.getLeagueInfo();
+    }
+    else{
+      this.league_summary = this.$root.state.league_info.league_summary
+    }
   }
 };
 </script>

@@ -28,6 +28,9 @@ export default {
     },
     methods:{
         onSave(){
+           if (!this.newScore){
+               return
+           } 
            this.$emit("add-score", {match_id: this.match_id, score: this.newScore});
            this.show = false
            this.oldScore = this.newScore

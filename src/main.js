@@ -37,7 +37,8 @@ import {
   AvatarPlugin,
   IconsPlugin,
   ImagePlugin,
-  CarouselPlugin
+  CarouselPlugin,
+  SidebarPlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -62,7 +63,8 @@ import {
   AvatarPlugin,
   IconsPlugin,
   ImagePlugin,
-  CarouselPlugin
+  CarouselPlugin,
+  SidebarPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

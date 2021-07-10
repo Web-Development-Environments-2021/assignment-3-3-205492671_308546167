@@ -1,79 +1,50 @@
 <template>
   <div class="main">
-    <h1 class="title">Search Page</h1>
+    <br>
     <b-card class="search-card">
       <b-form>
-        <b-form-group v-slot="{ ariaDescribedby }" >
-          <label class="welcome">Hey Liad, What are you looking for?</label>
-          <b-form-radio-group class="pt-2" id="radio-group-2">
-            <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="A">Player</b-form-radio>
-            <b-form-radio v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="B">Team</b-form-radio>
-          </b-form-radio-group>
+        <b-form-group >
+          <label class="welcome-wish">Hey {{username}} , What are you looking for?</label>
+          <b-form-radio-group v-model="selectedMainSearch" :options="mainFilterOptions" class="pt-2" id="radio-group-2"></b-form-radio-group>
           <span>
             <b-row>
-              <b-col cols="9"><b-form-input placeholder="Enter your query..."></b-form-input></b-col>
-              <b-col cols="3"><b-button>Search <b-icon-search></b-icon-search></b-button> </b-col>
+              <b-col cols="9">
+                <vue-bootstrap-typeahead v-if="selectedMainSearch == 'player'" v-model="searchQuery" :data="$root.store.state.search.all_players" :serializer="s => s.fullname"/>
+                <vue-bootstrap-typeahead v-if="selectedMainSearch == 'team'" v-model="searchQuery" :data="$root.store.state.search.all_teams" :serializer="s => s.team_name"/>
+              </b-col>
+              <b-col cols="3"><b-button v-on:click="search">Search <b-icon-search></b-icon-search></b-button> </b-col>
             </b-row>
           </span>
-      </b-form-group>
+          <br>
+          <div>
+            <div class="mb-3">
+              
+                <div class="buttons" >
+                  <sort-bar :options="mainPlayerSortOptions" v-on:sort-results="SortResults"> </sort-bar>
+                  <b-button v-b-toggle.my-sidebar class="filter-button"><div class="filter-padding"> Filter By</div><b-icon-filter> </b-icon-filter></b-button>
+                </div>
+        
 
+              
+            </div>
+            <b-sidebar id="my-sidebar" title="Filter Bar" shadow>
+              <div class="px-3 py-2">
+                <div class="filter_bar">
+                  <filter-bar v-if="selectedMainSearch == 'player'"  v-on:filter-results="FilterResults"></filter-bar>
+                </div>
+              </div>
+            </b-sidebar>
+        </div>
+      </b-form-group>
       </b-form>
-      
     </b-card>
-    
-    <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
-    
+    <br>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <b-input-group prepend="Search Query:" class="search-input">
-      <vue-bootstrap-typeahead v-if="selectedMainSearch == 'player'" v-model="searchQuery" :data="$root.store.state.search.all_players" :serializer="s => s.fullname"/>
-      <vue-bootstrap-typeahead v-if="selectedMainSearch == 'team'" v-model="searchQuery" :data="$root.store.state.search.all_teams" :serializer="s => s.team_name"/>
-      <b-form-group v-slot="{ ariaDescribedby }">
-        <b-form-radio-group
-          id="btn-radios-1"
-          v-model="selectedMainSearch"
-          :options="mainFilterOptions"
-          :aria-describedby="ariaDescribedby"
-          name="radios-btn-Mainsearch"
-          buttons
-        ></b-form-radio-group>
-      </b-form-group>
-      <b-button v-on:click="search">search</b-button>
-    </b-input-group>
-
-  <div class = "sort_container">
-    <div class="filter_bar">
-      <filter-bar v-if="selectedMainSearch == 'player'"  v-on:filter-results="FilterResults"></filter-bar>
-    </div>
-    <div class="sort_bar">
-      <sort-bar v-if="selectedMainSearch == 'player'" :options="mainPlayerSortOptions" v-on:sort-results="SortResults"></sort-bar>
-      <sort-bar v-if="selectedMainSearch == 'team'" :options="mainTeamSortOptions" v-on:sort-results="SortResults"></sort-bar>
-    </div>
-
-  </div>
   <div class="search_results">
     <search-results :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
   </div>
-  <!-- <div class="search_results">
-    <search-results v-if="selectedMainSearch == 'team' && filterTeamBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
-    <search-results v-if="selectedMainSearch == 'player' && filterPlayerBySearch" :results="results" :selectedMainSearch="selectedMainSearch" :emptyQuery="searchQuery" ></search-results>
-  </div> -->
+
     <br/>
   </div>
 </template>
@@ -90,15 +61,15 @@ export default {
         searchQuery:"",
         selectedMainSearch: 'player',
         mainFilterOptions: [
-          { text: 'player', value: 'player' },
-          { text: 'team', value: 'team' },
+          { text: 'Player', value: 'player' },
+          { text: 'Team', value: 'team' },
         ],
         mainPlayerSortOptions: [
           { text: 'ABC', value: 'fullname' },
-          { text: 'TEAM NAME', value: 'team_name' },
+          { text: 'Team Name', value: 'team_name' },
         ],
         mainTeamSortOptions: [
-          { text: 'TEAM NAME', value: 'team_name' },
+          { text: 'Team Name', value: 'team_name' },
         ]
       };
     },
@@ -140,8 +111,7 @@ export default {
       let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
         return pl.fullname.toLowerCase().includes(query.toLowerCase()); 
       });
-      this.saveResults(qulified_players);
-      return qulified_players;
+      this.saveResults(qulified_players.slice(0,20));
     },
     filterTeamBySearch(){
       if (this.searchQuery  == ""){
@@ -156,9 +126,14 @@ export default {
     }
   },
   computed: {
+    username(){
+      if(this.$root.store.state.user.username){
+        return this.$root.store.state.user.username;
+      }
+      return "guest";
   }
     
-}
+}}
 </script>
 
 <style scoped>
@@ -169,7 +144,7 @@ export default {
   left: 22.5%;
 }
 
-.welcome{
+.welcome-wish{
   background-color:#52565e; 
   color:white;
 }
@@ -179,15 +154,26 @@ export default {
   width: 500px;
 }
 
-/* .main{
-  border: solid 2px red;
-}*/
 
 .filter_bar{
-  /* border: solid 2px blue; */
   width: max-content; 
   margin-left: 50px;
 }
+.filter-button{
+ display: flex;
+ margin: 10px;
+ width: 110px;
+ height: 40px;
+} 
+
+.filter-padding{
+  padding-right: 5px;
+}
+
+.buttons{
+  display:flex;
+}
+
 /* 
 .search_results{
  
@@ -208,4 +194,5 @@ export default {
   /* justify-content: space-evenly;  */
   width: max-content;
 }
+
 </style>

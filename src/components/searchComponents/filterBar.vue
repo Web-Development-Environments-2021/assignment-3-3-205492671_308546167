@@ -1,17 +1,18 @@
 <template>
     <div>
-    <b-form-group label="Postions" v-slot="{ ariaDescribedby }">
-      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="1">GK</b-form-radio>  
-      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="2">DEF</b-form-radio>
-      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="3">MID</b-form-radio>
-      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="4">ATT</b-form-radio>
+    <b-form-group  v-slot="{ ariaDescribedby }">
+        <label class="bold">Positions:</label>
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="1">Goalkeeper</b-form-radio>  
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="2">Defender</b-form-radio>
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="3">Midfield</b-form-radio>
+      <b-form-radio v-if="selectPosFilter" v-model="selected" :aria-describedby="ariaDescribedby" name="some-radios" value="4">Attacker</b-form-radio>
       
     </b-form-group>
 
-    <p>TEAM</p>
+    <p class="bold">Team:</p>
     <div class="team-filter-container">
     <b-form-input class="team-filter-input" v-model="team_filter"></b-form-input>
-    <b-button v-on:click="TeamFilter">filter</b-button>
+    <b-button v-on:click="TeamFilter">Filter</b-button>
     </div>
 
   </div>
@@ -49,5 +50,8 @@ export default {
 }
 .team-filter-input {
     width: 100px;
+}
+.bold{
+    font-weight: bold;
 }
 </style>

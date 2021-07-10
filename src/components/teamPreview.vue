@@ -35,11 +35,13 @@ export default {
 
 <style>
 .cardcolor{
-    max-width: 15rem;
+    /* max-width: 15rem; */
     background-color: transparent;
     border:0;
-     max-width: 200px; 
-     max-height:200px
+    box-shadow: none;
+    right:20%;
+     width: 220px; 
+     height:200px;
 }
 
 

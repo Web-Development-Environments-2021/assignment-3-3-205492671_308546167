@@ -24,6 +24,8 @@
                 :away_team="m.away_team" 
                 :date="m.date" 
                 :court="m.court"
+                :home_team_logo="m.home_team_logo"
+                :away_team_logo="m.away_team_logo"
                 :key="m.id"></GamePreview>
             </div>
           </b-col>
@@ -34,15 +36,18 @@
               :team_logo="team_logo">
             </teamPreview>
           </b-col>
-            <b-col cols="4" > 
-          <GamePreview
-            v-for="m in post_played_matches"
-            :id="m.match_id" 
-            :home_team="m.home_team" 
-            :away_team="m.away_team" 
-            :date="m.date" 
-            :court="m.court"
-            :key="m.id"></GamePreview>
+          <b-col cols="4" > 
+            <GamePreview
+              v-for="m in post_played_matches"
+              :id="m.match_id" 
+              :home_team="m.home_team" 
+              :away_team="m.away_team" 
+              :date="m.date" 
+              :court="m.court"
+              :home_team_logo="m.home_team_logo"
+              :away_team_logo="m.away_team_logo"
+              :key="m.id">
+            </GamePreview>
         </b-col>
     </b-row>
 
@@ -103,8 +108,8 @@ export default {
           {withCredentials: true}
         );
         this.players = response.data.team_players;
-        this.post_played_matches = response.data.post_played_matches;
-        this.pre_played_matches = response.data.pre_played_matches;
+        this.post_played_matches = response.data.post_play_matches;
+        this.pre_played_matches = response.data.pre_play_matches;
         this.team_name = response.data.team_name;
         this.team_logo = response.data.team_logo;
  
@@ -112,21 +117,10 @@ export default {
         console.log(error);
         this.$router.push("/").catch(()=>{});
       }
-    },
-    async getDetailsTODELETE(){
-        this.players =this.$root.store.state.teams.team_players;
-        this.post_played_matches =this.$root.store.state.teams.post_played_matches;
-        this.pre_played_matches=this.$root.store.state.teams.pre_played_matches;
-        this.team_name = this.$root.store.state.teams.team_name;
-        this.team_logo = this.$root.store.state.teams.team_logo;
-        this.team_id = this.$root.store.state.teams.team_id;
-
-
     }
   },
   created(){
     this.getTeamDetails();
-    // this.getDetailsTODELETE();
   }
 
 }

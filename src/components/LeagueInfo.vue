@@ -1,7 +1,24 @@
 <template>
     <div class="league-preview">
+
+        <div class="next-match"> 
+        <game-preview  v-if="match"
+        :id="match.match_id" 
+        :home_team="match.home_team" 
+        :away_team="match.away_team" 
+        :home_team_logo="match.home_team_logo" 
+        :away_team_logo="match.away_team_logo" 
+        :date="match.date" 
+        :court="match.court"
+        :score="match.score"
+        ></game-preview>
+        </div>
+        <br>
+
       <b-card class="leauge-info-card">
-      <b-card-img src="https://res.cloudinary.com/dswkzsdoq/image/upload/v1625860678/1200px-Superliga_2010.svg_hvaenv.png"></b-card-img>
+      <b-row>
+        <b-col cols="5">
+          <b-card-img class="superliga-logo" src="https://res.cloudinary.com/dswkzsdoq/image/upload/v1625860678/1200px-Superliga_2010.svg_hvaenv.png"></b-card-img>
       <b-card-text>
         <br/>
         <span class="bold">Season:</span> {{ season }}
@@ -10,15 +27,16 @@
         <br/>
         <br/>
       </b-card-text>
-
-      <b-card-body class="carousel">
-        <b-carousel 
+        </b-col>
+        <b-col cols="7">
+<b-card-body >
+        <b-carousel class="carousel"
 
           :interval="4000"
           controls
           indicators
           background="transparent"
-          style= "width:220px; right:18%;"
+          style= "right:18%;"
         >
 
           <b-carousel-slide 
@@ -32,21 +50,13 @@
             </teamPreview>
           </b-carousel-slide>
         </b-carousel>
-
-        <div class="next-match">
-        <game-preview v-if="match"
-        :id="match.match_id" 
-        :home_team="match.home_team" 
-        :away_team="match.away_team" 
-        :home_team_logo="match.home_team_logo" 
-        :away_team_logo="match.away_team_logo" 
-        :date="match.date" 
-        :court="match.court"
-        :score="match.score"
-        ></game-preview>
-      </div>
         </b-card-body>
+        </b-col>
+      
+      </b-row>
+      
     </b-card>
+
  
                   
   </div>
@@ -77,10 +87,10 @@ export default {
 <style>
 .league-preview {
   /* display: inline-block; */
-  width: 250px;
+  width: 70%;
   /* height: 20px; */
   position: relative;
-  margin: 10px 10px;
+  /* margin: 10px 10px; */
 
 }
 
@@ -97,11 +107,17 @@ export default {
 .bold{
   font-weight: bold;
 }
-.next-match{
-  background-color: red;
-}
+
 .leauge-info-card{
+  /* width: 100%; */
    background-color: #E5E5EC;
   opacity: 0.85;
 }
+.superliga-logo{
+  width: 50%;
+}
+.carousel{
+  width: 220px;
+}
+
 </style>

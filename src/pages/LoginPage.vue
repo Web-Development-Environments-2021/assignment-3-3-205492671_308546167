@@ -125,7 +125,7 @@ export default {
             password: this.form.password
           }, {withCredentials: true}
         );
-        this.$root.store.actions.login(this.form.username, response.data.roles);
+        this.$root.store.actions.login(this.form.username, response.data.roles, response.data.profile_picture);
         this.$router.push("/").catch(()=>{});
       } catch (err) {
         console.log(err.response);

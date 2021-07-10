@@ -5,7 +5,8 @@ const state = {
     },  
     user: {
         username: "",
-        roles: []
+        roles: [],
+        profile_picture: ""
     },
     favorite_matches: {
         matches: [],
@@ -363,10 +364,10 @@ const state = {
     }
 }
 const actions = {
-    login(username, roles) {
-        debugger;
+    login(username, roles, profile_picture) {
         state.user.username = username;
         state.user.roles = roles;
+        state.user.profile_picture = profile_picture;
         },
     logout() {
     state.user.username = undefined;

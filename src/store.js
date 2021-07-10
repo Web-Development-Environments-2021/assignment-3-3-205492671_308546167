@@ -17,6 +17,7 @@ const state = {
         fresh: false
     },
     search: {
+        last_search: [],      
         all_players: [],
         all_teams: [
           {
@@ -125,6 +126,9 @@ const actions = {
     setLeagueInfo(summary){
       state.league_info.league_summary = summary
       state.league_info.fresh = !state.league_info.fresh
+    },
+    saveSearch(last_search){
+      state.search.last_search = last_search
     }
 
 }

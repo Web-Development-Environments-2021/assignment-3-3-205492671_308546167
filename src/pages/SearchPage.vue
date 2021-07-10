@@ -55,7 +55,7 @@ import FilterBar from '../components/searchComponents/filterBar.vue';
 import searchResults from '../components/searchComponents/searchResults.vue';
 import SortBar from '../components/searchComponents/sortBar.vue';
 export default {
-  components: { searchResults, SortBar, FilterBar, FilterBar },
+  components: { searchResults, SortBar, FilterBar },
   data() {
       return {
         results: [],
@@ -76,6 +76,7 @@ export default {
     },
     methods: {
       saveResults(search_results){
+        this.$root.store.actions.saveSearch(search_results);
         this.results = search_results;
       },
 
@@ -91,40 +92,40 @@ export default {
             }
           // names must be equal
           return 0;
-      })
-    },
-    FilterResults(filterby, value){
-      this.results = this.results.filter(e => e[filterby] == value)
-    },
-    search(){
-      if (this.selectedMainSearch == "player"){
-        this.filterPlayerBySearch();
+        })
+      },
+      FilterResults(filterby, value){
+        this.results = this.results.filter(e => e[filterby] == value)
+      },
+      search(){
+        if (this.selectedMainSearch == "player"){
+          this.filterPlayerBySearch();
+        }
+        else{
+          this.filterTeamBySearch();
+        }
+      },
+          filterPlayerBySearch(){
+        if (this.searchQuery  == ""){
+          return [];
+        }
+        let query = this.searchQuery;
+        let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
+          return pl.fullname.toLowerCase().includes(query.toLowerCase()); 
+        });
+        this.saveResults(qulified_players.slice(0,20));
+      },
+      filterTeamBySearch(){
+        if (this.searchQuery  == ""){
+          return [];
+        }
+        let query = this.searchQuery;
+        let qulified_teams = this.$root.store.state.search.all_teams.filter(t => {
+          return t.team_name.toLowerCase().includes(query.toLowerCase()); 
+        });
+        this.saveResults(qulified_teams);
+        return qulified_teams;
       }
-      else{
-        this.filterTeamBySearch();
-      }
-    },
-        filterPlayerBySearch(){
-      if (this.searchQuery  == ""){
-        return [];
-      }
-      let query = this.searchQuery;
-      let qulified_players = this.$root.store.state.search.all_players.filter(pl => {
-        return pl.fullname.toLowerCase().includes(query.toLowerCase()); 
-      });
-      this.saveResults(qulified_players.slice(0,20));
-    },
-    filterTeamBySearch(){
-      if (this.searchQuery  == ""){
-        return [];
-      }
-      let query = this.searchQuery;
-      let qulified_teams = this.$root.store.state.search.all_teams.filter(t => {
-        return t.team_name.toLowerCase().includes(query.toLowerCase()); 
-      });
-      this.saveResults(qulified_teams);
-      return qulified_teams;
-    }
   },
   computed: {
     username(){
@@ -132,9 +133,12 @@ export default {
         return this.$root.store.state.user.username;
       }
       return "guest";
-  }
-    
-}}
+    } 
+  },
+  created() {
+    this.results = this.$root.store.state.search.last_search
+  },
+}
 </script>
 
 <style scoped>

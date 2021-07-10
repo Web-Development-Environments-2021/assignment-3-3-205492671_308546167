@@ -86,11 +86,8 @@ export default {
 
 <style>
 .league-preview {
-  /* display: inline-block; */
   width: 70%;
-  /* height: 20px; */
   position: relative;
-  /* margin: 10px 10px; */
 
 }
 
@@ -109,7 +106,6 @@ export default {
 }
 
 .leauge-info-card{
-  /* width: 100%; */
    background-color: #E5E5EC;
   opacity: 0.85;
 }

@@ -36,11 +36,9 @@ export default {
 <style scoped>
 
 .sort-button{
-    /* border: solid 2px red; */
     margin: 10px;
     width: 110px;
     height: 40px;
-    /* display: flex; */
 }
 
 .sort-padding{

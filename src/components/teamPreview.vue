@@ -34,7 +34,6 @@ export default {
 
 <style>
 .cardcolor{
-    /* max-width: 15rem; */
     background-color: transparent;
     border:0;
     box-shadow: none;

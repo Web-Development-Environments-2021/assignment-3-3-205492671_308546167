@@ -36,7 +36,6 @@ export default {
             if (this.selected){
                 this.$emit('filter-results', 'position_num', this.selected);
             }
-            // return this.selected;
             return true
 
         }

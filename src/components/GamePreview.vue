@@ -93,7 +93,6 @@ export default {
 }
 
 .grid > div {
-/* background-color: #374d51; */
 background-color: #2c3e50;
 color: white;
 font-size: medium;
@@ -117,10 +116,6 @@ text-align: center;
     height: 60%;
     width:60%;
 }
-
-
-
-
 
 </style>
 

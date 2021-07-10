@@ -38,9 +38,6 @@
         <!-- end row -->
       </div>
     <!-- container -->
-    <!-- <p v-if="results.length==0 && emptyQuery">
-      im sorry but no search results fitted you query 
-    </p> -->
     </div>
   </div>
 </div>

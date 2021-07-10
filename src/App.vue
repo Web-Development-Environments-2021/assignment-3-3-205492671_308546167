@@ -19,7 +19,7 @@
         </b-navbar-nav>
 
         <b-navbar-nav v-if="$root.store.state.user.username" class="ml-auto d-flex align-items-center">
-          <b-avatar class="mr-3" variant="info" src="https://placekitten.com/300/300">
+          <b-avatar class="mr-3" variant="info" :src="$root.store.state.user.proflie_pic">
                 <template v-if="isUni" #badge><b-icon icon="star-fill"></b-icon></template>
           </b-avatar>
            <span class="user-name mr-auto">{{$root.store.state.user.username}}</span>

@@ -32,7 +32,7 @@
           </b-carousel-slide>
         </b-carousel>
       <div class="next-match">
-      <game-preview
+      <game-preview v-if="match"
       :id="match.match_id" 
       :home_team="match.home_team" 
       :away_team="match.away_team" 

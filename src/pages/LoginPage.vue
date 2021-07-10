@@ -124,7 +124,7 @@ export default {
         this.$root.store.actions.login(this.form.username, response.data.roles, response.data.profile_picture);
         this.$router.push("/").catch(()=>{});
       } catch (err) {
-        console.log(err.response);
+        this.$root.toast("Invalid Login", err.response.data, "danger");
         this.form.submitError = err.response.data.message;
       }
     },
@@ -132,6 +132,7 @@ export default {
       this.form.submitError = undefined;
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
+
         return;
       }
 

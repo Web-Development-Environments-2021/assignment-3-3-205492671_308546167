@@ -114,8 +114,9 @@ const actions = {
       let match = state.season_matches.matches.find(m => m.match_id == e.match_id);
       match.eventlog.push(e.event);
     },
-    addSCore(s){
+    addScore(s){
       let match = state.season_matches.matches.find(m => m.match_id == s.match_id);
+      debugger;
       match.score = s.score;
     },
     hasPremission(role){

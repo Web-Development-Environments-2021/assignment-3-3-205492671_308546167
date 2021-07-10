@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1 class="title-design"> Up coming</h1>
-      <b-table class="data-table" striped hover :items="pre_matches" :fields="fields" :busy="isBusy">
+      <b-table class="data-table" striped hover :items="pre_matches" :fields="fields" :busy="isPreBusy">
 
       <template #table-busy>
         <div class="text-center text-danger my-2">
@@ -39,7 +39,7 @@
         </template>
       </b-table>
       <h1 class="title-design">Already Played</h1>
-      <b-table class="data-table" striped hover :items="post_matches" :fields="fields" :busy="isBusy">
+      <b-table class="data-table" striped hover :items="post_matches" :fields="fields" :busy="isPostBusy">
 
         <template #table-busy>
           <div class="text-center text-danger my-2">
@@ -169,8 +169,16 @@ export default {
     }
   },
   computed: {
-    isBusy() {
+    isPreBusy() {
         if (!this.pre_matches.length){
+          console.log("im busy")
+          return true;
+        }
+        console.log("im cool")
+        return false;
+      },
+    isPostBusy() {
+        if (!this.post_matches.length){
           console.log("im busy")
           return true;
         }

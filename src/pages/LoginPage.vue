@@ -152,11 +152,11 @@ export default {
 
 .login-button{
   background-color: #25302B;
-  border-color: #4A503D;
+  border-color: #4d5e74;
   
 }
 .login-button:hover{
-  background-color: #8E9775;
+  background-color: #4d5e74;
 }
 
 .title{

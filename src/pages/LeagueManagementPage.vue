@@ -163,6 +163,7 @@ export default {
         );
         this.$root.toast("add score", "score was added successfully", "success");
         this.$root.store.actions.addScore(update_score);
+        this.season_matches = this.$root.store.state.season_matches.matches
       } catch (error) {
         this.$root.toast("add score", error.response.data, "danger");
       }

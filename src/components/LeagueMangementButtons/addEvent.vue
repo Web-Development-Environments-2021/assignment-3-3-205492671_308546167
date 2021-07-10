@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button @click="show=true" variant="primary">Add Event</b-button>
+    <b-button @click="show=true" variant="dark">Add Event</b-button>
 
     <b-modal
       v-model="show"
@@ -54,16 +54,16 @@
             variant="primary"
             size="sm"
             class="float-right"
-            @click="onSave">
-            Save
-          </b-button>
-          <b-button
-            variant="primary"
-            size="sm"
-            class="float-right"
             @click="show=false"
           >
             Close
+          </b-button>
+            <b-button
+            variant="primary"
+            size="sm"
+            class="float-right"
+            @click="onSave">
+            Save
           </b-button>
         </div>
       </template>
@@ -110,5 +110,7 @@
 </script>
 
 <style scoped>
-
+  .float-right{
+    margin-right:5px;
+  }
 </style>

@@ -16,21 +16,6 @@
                 </PlayerPreviewNG>
           </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-            <div class="text-right">
-                <ul class="pagination pagination-split mt-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span> <span class="sr-only">Previous</span></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span> <span class="sr-only">Next</span></a></li>
-                </ul>
-            </div>
-        </div>
-      </div>
         <!-- end row -->
     </div>
     <!-- container -->
@@ -38,18 +23,26 @@
   </div>
  
     <div v-if="results.length && results[0].team_id">
-      <div v-for="t in results" :key="t.team_id">
-          <team-preview 
+      <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="team-results" v-for="t in results" :key="t.team_id">
+          <team-preview style="box-shadow=none"
           :team_id="t.team_id"
           :team_name="t.team_name"
           :team_logo="t.image"
           :key="t.team_id">
           </team-preview>
+          </div>
+        </div>
+        <!-- end row -->
       </div>
-    </div>
-    <p v-if="!results.length && emptyQuery">
+    <!-- container -->
+    <!-- <p v-if="results.length==0 && emptyQuery">
       im sorry but no search results fitted you query 
-    </p>
+    </p> -->
+    </div>
+  </div>
 </div>
 
 </template>
@@ -78,5 +71,8 @@ export default {
 </script>
 
 <style scoped>
+.team-results{
+  display: flex;
 
+}
 </style>

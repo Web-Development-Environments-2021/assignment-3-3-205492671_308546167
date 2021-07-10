@@ -20,8 +20,9 @@
             <div class="mb-3">
               
                 <div class="buttons" >
-                  <sort-bar :options="mainPlayerSortOptions" v-on:sort-results="SortResults"> </sort-bar>
-                  <b-button v-b-toggle.my-sidebar class="filter-button"><div class="filter-padding"> Filter By</div><b-icon-filter> </b-icon-filter></b-button>
+                  <sort-bar v-if="selectedMainSearch == 'player'" :options="mainPlayerSortOptions" v-on:sort-results="SortResults"> </sort-bar>
+                  <sort-bar v-if="selectedMainSearch == 'team'" :options="mainTeamSortOptions" v-on:sort-results="SortResults"> </sort-bar>
+                  <b-button v-if="selectedMainSearch == 'player'" v-b-toggle.my-sidebar class="filter-button"><div class="filter-padding"> Filter By</div><b-icon-filter> </b-icon-filter></b-button>
                 </div>
         
 

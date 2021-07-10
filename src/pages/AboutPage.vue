@@ -73,8 +73,11 @@ export default {
   color: #25302B;
   background-color: #E5E5EC;
   opacity: 0.85;
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 10px; 
 
-  /* #9FC9B5 */
+
 }
 .profile-picture{
   width:80%;

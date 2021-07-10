@@ -287,9 +287,9 @@ export default {
           }
         );
         this.$router.push("/");
-        // console.log(response);
       } catch (err) {
-        console.log(err.response);
+        debugger
+        this.$root.toast("Register", err.response.data, "danger");
         this.form.submitError = err.response.data.message;
       }
     },

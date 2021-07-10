@@ -145,10 +145,7 @@ export default {
   left: 22.5%;
 }
 
-.welcome-wish{
-  background-color:#52565e; 
-  color:white;
-}
+
 .search-input {
   margin-left: 250px; 
   margin-bottom: 20px;
@@ -175,12 +172,6 @@ export default {
   display:flex;
 }
 
-/* 
-.search_results{
- 
-  margin-left: 450px ;
-  display: flex;
-} */
 
 .sort_bar{
   /* border: solid 2px purple; */

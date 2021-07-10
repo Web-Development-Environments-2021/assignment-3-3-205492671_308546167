@@ -1,7 +1,7 @@
 <template>
     <div>
-      <h1> Up coming</h1>
-      <b-table striped hover :items="pre_matches" :fields="fields" :busy="isBusy">
+      <h1 class="title-design"> Up coming</h1>
+      <b-table class="data-table" striped hover :items="pre_matches" :fields="fields" :busy="isBusy">
 
       <template #table-busy>
         <div class="text-center text-danger my-2">
@@ -30,8 +30,8 @@
           :value= "$root.store.state.favorite_matches.matches.filter(e => e.match_id == data.item.match_id).length>0"></heart>
         </template>
       </b-table>
-      <h1>Already Played</h1>
-      <b-table striped hover :items="post_matches" :fields="fields" :busy="isBusy">
+      <h1 class="title-design">Already Played</h1>
+      <b-table class="data-table" striped hover :items="post_matches" :fields="fields" :busy="isBusy">
 
         <template #table-busy>
           <div class="text-center text-danger my-2">
@@ -59,6 +59,7 @@
           </div>
         </template>
        </b-table>
+       <br>
     </div>
 </template>
 
@@ -165,5 +166,19 @@ export default {
 </script>
 
 <style>
+.data-table{
+    color: #25302B;
+  background-color: #E5E5EC;
+  opacity: 0.85;
+  margin: 0 auto; 
+  float: none; 
+  width:95%;
+}
 
+.title-design{
+  color: #2c3e50;
+  text-align: center;
+  font-weight: bold;
+
+}
 </style>

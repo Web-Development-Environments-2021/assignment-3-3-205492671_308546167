@@ -1,12 +1,11 @@
 <template>
     <div>
-      <h2> League Management Page </h2>
       <b-row>
         <b-col md="10">
         </b-col>
       </b-row>
 
-    <b-table striped hover :items="season_matches" :fields="fields" :busy="isBusy" responsive="sm" class="mt-3" outlined>
+    <b-table striped hover :items="season_matches" :fields="fields" :busy="isBusy" responsive="sm" class="data-table mt-3" outlined>
       <template #table-busy>
         <div class="text-center text-danger my-2">
           <b-spinner class="align-middle"></b-spinner>
@@ -31,6 +30,7 @@
         </div>
       </template>
     </b-table>
+    <br>
     <div class="c-match-button">
     <create-match v-on:add-match="addMatch"></create-match>
     </div>
@@ -223,14 +223,31 @@ export default {
 </script>
 
 <style scoped>
+.data-table{
+    color: #25302B;
+  background-color: #E5E5EC;
+  opacity: 0.85;
+  /* margin: 0 auto; 
+  float: none;  */
+  width:95%;
+}
 
+.title-design{
+  color: #2c3e50;
+  text-align: center;
+  font-weight: bold;
+
+}
 .c-match-button {
   float: right;
+  margin-right: 2.5%;
+
 }
 
 .r-add-button {
   float: right;
-  margin-right: 10px;
+  margin-right: 1%;
+  
 }
 
 </style>

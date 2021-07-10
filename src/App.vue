@@ -7,6 +7,7 @@
 
         <b-nav-item :to="{ name: 'Search Page' }">Search</b-nav-item>
         <b-nav-item :to="{ name: 'Current Fixture Page' }">Current Fixture</b-nav-item>
+        <b-nav-item :to="{ name: 'About' }">About</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-if="!$root.store.state.user.username">
           <b-nav-item :to="{ name: 'Login' }">Login</b-nav-item>

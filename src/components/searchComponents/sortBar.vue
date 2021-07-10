@@ -1,18 +1,13 @@
 <template>
-    <b-form-group v-slot="{ ariaDescribedby }">
-    <div class="sort_container">
-    <p>sort by:</p>
-    <b-form-radio-group class = "b_form"
-    id="btn-radios-1"
-    v-model="selectedSort"
-    :options="options"
-    :aria-describedby="ariaDescribedby"
-    name="radios-btn-MainSort"
-    buttons>
-    </b-form-radio-group>
-    </div>
-    <p v-if="selectedSort">sorting by: {{selectsort}}</p>
-</b-form-group>
+         <div class="mb-3">
+            <b-button v-b-toggle.my-collapse class="sort-button"><span class="sort-padding">Sort By</span><b-icon-toggles></b-icon-toggles></b-button>
+         
+            <b-collapse id="my-collapse">
+                <b-col cols="12">
+                <b-form-select label-field="Sort By" v-if="sort || true" v-model="selectedSort" :options="options"></b-form-select>
+                </b-col>
+            </b-collapse>
+           </div>
 </template>
 
 <script>
@@ -29,7 +24,7 @@ export default {
         }
     },
     computed: {
-        selectsort(){
+        sort(){
             this.$emit('sort-results', this.selectedSort);
             return this.selectedSort;
         }
@@ -40,9 +35,16 @@ export default {
 
 <style scoped>
 
-.sort_container{
+.sort-button{
     /* border: solid 2px red; */
-    display: flex;
+    margin: 10px;
+    width: 110px;
+    height: 40px;
+    /* display: flex; */
+}
+
+.sort-padding{
+    padding-right: 10px;
 }
 
 .b_form{

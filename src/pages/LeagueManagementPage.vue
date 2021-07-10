@@ -157,7 +157,6 @@ export default {
 
     async addScore(update_score){
       try {
-        debugger;
         const response = await this.axios.put(
           "http://localhost:4000/user/union_representative/add_score", update_score,
           {withCredentials: true}
@@ -227,8 +226,6 @@ export default {
     color: #25302B;
   background-color: #E5E5EC;
   opacity: 0.85;
-  /* margin: 0 auto; 
-  float: none;  */
   width:95%;
 }
 

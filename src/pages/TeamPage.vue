@@ -147,8 +147,4 @@ export default {
 .players-carousel{
   left:30%;
 }
-
-
-  
-
 </style>

@@ -292,7 +292,6 @@ export default {
         );
         this.$router.push("/");
       } catch (err) {
-        debugger
         this.$root.toast("Register", err.response.data, "danger");
         this.form.submitError = err.response.data.message;
       }

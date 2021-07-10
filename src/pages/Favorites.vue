@@ -1,6 +1,8 @@
 <template>
   <div>
+    <b-card class="favorite-matches">
       <favorite-games></favorite-games>
+    </b-card>
   </div>
 </template>
 
@@ -17,5 +19,10 @@ export default {
 </script>
 
 <style>
-
+.favorite-matches{
+  width: 50%;
+  align-content: center;
+  left: 25%;
+  background: transparent;
+}
 </style>

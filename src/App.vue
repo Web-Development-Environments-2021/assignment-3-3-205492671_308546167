@@ -19,7 +19,7 @@
         </b-navbar-nav>
 
         <b-navbar-nav v-if="$root.store.state.user.username" class="ml-auto d-flex align-items-center">
-          <b-avatar class="mr-3" variant="info" :src="$root.store.state.user.proflie_pic">
+          <b-avatar class="mr-3" variant="info" v-bind:src="$root.store.state.user.profile_picture">
                 <template v-if="isUni" #badge><b-icon icon="star-fill"></b-icon></template>
           </b-avatar>
            <span class="user-name mr-auto">{{$root.store.state.user.username}}</span>
